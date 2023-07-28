@@ -1,0 +1,134 @@
+.hero {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 100px 100px 100px;
+    background-color: #252422;
+    overflow: hidden;
+    position: relative;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .content {
+    flex-shrink: 0;
+    width: 1000px;
+    height: 80%; /* 486px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 0px 0px 0px 0px;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 60;
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .text_hero {
+    flex-shrink: 0;
+    width: auto;
+    height: 300px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 800px;
+    overflow: visible;
+    flex: 1 0 0px;
+    position: relative;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Elsie', sans-serif;
+    color: #fffcf2;
+    font-size: 70px;
+    letter-spacing: 0em;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .buttons {
+    flex-shrink: 0;
+    height: 5%; /* 44px */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex: 1 0 0px;
+    position: relative;
+    padding: 0px 0px 0px 0px;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 10;
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .button_orange {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 130px; /* 167px */
+    height: 40px; /* 44px */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    background-color: #eb5e28;
+    overflow: hidden;
+    position: relative;
+    align-content: center;
+    flex-wrap: nowrap;
+    margin: 0px 10px 0px 0px;
+    border-radius: 9999px;
+    border: 0px solid #252422;
+    color: white;
+  }
+
+
+  .button_white {
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 130px; 
+    height: 40px; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    background-color: #ccc5b9;
+    overflow: hidden;
+    position: relative;
+    align-content: center;
+    flex-wrap: nowrap;
+    margin: 0px 0px 0px 10px;
+    border-radius: 9999px;
+    border: 0px solid #252422;
+    color: #252422;
+  }
+
+  .emoji {
+    flex-shrink: 0;
+    width: auto; /* 60px */
+    height: auto; /* 58px */
+    white-space: pre;
+    overflow: visible;
+    position: relative;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Noto Emoji", "Noto Emoji Placeholder", sans-serif;
+    color: #fffcf2;
+    font-size: 40px;
+    letter-spacing: 0em;
+    line-height: 1.2;
+    text-align: center;
+  }
