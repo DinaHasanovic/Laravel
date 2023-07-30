@@ -1,0 +1,76 @@
+.faq {
+  box-sizing: border-box;
+  width: 100%;
+  height: min-content; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10%;
+  background-color: #252422;
+  align-content: center;
+  gap: 100;
+}
+
+.faq_Title {
+  text-align: left;
+  height: auto; 
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Elsie", sans-serif;
+  color: #eb5e28;
+  font-size: 48px;
+  letter-spacing: 0em;
+  line-height: 1.2;
+}
+
+.faq-questions_row {
+  width: 100%;
+  height: min-content; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  margin-top: 5%;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.faq-questions_row_text {
+  width: 50%;
+  height: min-content; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 100%;
+  padding: 0px;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+
+.faq-question{
+  height: auto; 
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Archivo", "Archivo Placeholder", sans-serif;
+  color: #eb5e28;
+  font-size: 20px;
+  letter-spacing: -0.025em;
+  line-height: 1.5;
+}
+
+.faq-answer{
+  height: auto; 
+  max-width: 400px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Archivo", "Archivo Placeholder", sans-serif;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1.5;
+  text-align: left;
+}

@@ -1,0 +1,107 @@
+.WhyChooseUs_Body {
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10%;
+    background-color: #252422;
+    overflow: hidden;
+    position: relative;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 40;
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .WhyChooseUs_content {
+    width: 100%;
+    height: min-content; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+    border-radius: 0;
+  }
+
+  .Why_Choose_Us {
+    text-align: left;
+    height: auto; 
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Elsie", sans-serif;
+    color: #ffffff;
+    font-size: 48px;
+  }
+
+
+  .WhyChooseUs_Paragraphs {
+    height: min-content; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 65%;
+    padding: 0;
+    align-content: center;
+  }
+
+  .WhyChooseUs_Paragraph_1 {
+    height: auto; 
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Archivo", "Archivo Placeholder", sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .WhyChooseUs_Columns {
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    align-content: center;
+  }
+
+  .WhyChooseUs_Card {
+    width: 50%;
+    height: min-content; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 0;
+    align-content: flex-start;
+  }
+
+  .WhyChooseUs_CardNumber {
+    height: auto; 
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Elsie", sans-serif;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 0em;
+    line-height: 1.2;
+  }
+
+
+  .WhyChooseUs_CardText {
+    height: auto; 
+    max-width: 400px;
+    font-weight: 700;
+    font-style: normal;
+    font-family: "Archivo", "Archivo Placeholder", sans-serif;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: -0.025em;
+    line-height: 1.5;
+  }

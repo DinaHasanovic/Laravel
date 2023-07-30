@@ -1,0 +1,100 @@
+.getStarted_Body {
+    box-sizing: border-box;
+    height: min-content; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    background-color: #252422;
+    align-content: center;
+    flex-wrap: nowrap;
+  }
+
+
+  .getStarted_Title {
+    height: auto; 
+    max-width: 800px;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Elsie", sans-serif;
+    color: #fffcf2;
+    font-size: 48px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+
+  .getStarted_Text {
+    width: 30.8%;
+    height: auto; 
+    max-width: 100%;
+    font-weight: 400;
+    font-style: normal;
+    font-family: "Archivo", "Archivo Placeholder", sans-serif;
+    color: #fffcf2;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+
+  .getStarted_Buttons {
+    box-sizing: border-box;
+    width: 20%; 
+    height: min-content; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px 0px 0px;
+    align-content: center;
+  }
+
+  .getStarted_Explore_Button {
+    box-sizing: border-box;
+    width: 48%; 
+    height: 40px;
+    border: 0px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #eb5e28;
+    align-content: center;
+    border-radius: 8px;
+    font-weight: 700;
+    font-style: normal;
+    font-family: "Archivo", "Archivo Placeholder", sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0em;
+    line-height: 1.2;
+    text-align: center;
+
+  }
+
+
+  .getStarted_GetStarted_Button {
+    box-sizing: border-box;
+    width: 48%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #ccc5b9;
+    align-content: center;
+    font-weight: 700;
+    font-style: normal;
+    font-family: "Archivo", "Archivo Placeholder", sans-serif;
+    color: #252422;
+    font-size: 14px;
+    letter-spacing: 0em;
+    line-height: 1.2;
+    text-align: center;
+    border-radius: 8px;
+    border: 0px solid black;
+  }

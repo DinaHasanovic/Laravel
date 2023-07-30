@@ -10,6 +10,9 @@
 <body class="body">  
     <x-hero/>
     <x-whyUs/>
+    <x-courses/>
+    <x-getStarted/>
+    <x-faq/>
     <x-footer/>
 </body>
 </html>

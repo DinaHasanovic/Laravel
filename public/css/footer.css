@@ -1,32 +1,21 @@
 .footer {
     box-sizing: border-box;
-    flex-shrink: 0;
     width: 100%;
     height: min-content; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 100px 100px 100px;
+    padding: 100px;
     background-color: #252422;
-    overflow: hidden;
-    position: relative;
     align-content: center;
     flex-wrap: nowrap;
-    gap: 40;
-    border-radius: 0px 0px 0px 0px;
   }
 
 
   .text {
-    flex-shrink: 0;
     width: 100%;
-    height: auto; /* 24px */
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    word-break: break-word;
-    overflow: hidden;
-    position: relative;
+    height: auto; 
     font-weight: 400;
     font-style: normal;
     font-family: "Archivo", "Archivo Placeholder", sans-serif;
@@ -40,12 +29,8 @@
 
 
   .image {
-    flex-shrink: 0;
-    width: auto; /* 102px */
-    height: auto; /* 96px */
-    white-space: pre;
-    overflow: visible;
-    position: relative;
+    width: auto; 
+    height: auto; 
     font-weight: 400;
     font-style: normal;
     font-family: "Noto Emoji", "Noto Emoji Placeholder", sans-serif;
