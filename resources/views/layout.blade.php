@@ -14,5 +14,6 @@
     <x-getStarted/>
     <x-faq/>
     <x-footer/>
+    {{-- <x-course/> --}}
 </body>
 </html>
