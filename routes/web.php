@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // All Listings
-Route::get('/', [CourseController::class, 'index'] );
+ Route::get('/', [CourseController::class, 'index'] );
 
 //Single Listing
-Route::get('/course',[CourseController::class, 'show']);
+Route::get('/courses/{course}',[CourseController::class, 'show']);
 
 //Store Listing Data
 Route::post('/courses/create', [CourseController::class, 'store']);
