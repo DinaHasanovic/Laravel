@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
 </head>
+<x-flash-message/> {{--flash Message(popup when course is created) --}}
 <body class="body">  
     @include('partials._navbar')
     @include('partials._search')

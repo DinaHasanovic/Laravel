@@ -46,6 +46,7 @@ class CourseController extends Controller
         ]);
         Courses::create($formFields);
 
-        return redirect('/');
+
+        return redirect('/')-> with('message','Course Created Successfuly!');
     }
 }
