@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
 </head>
 <body class="body">  
-    <x-hero/>
-    <x-whyUs/>
-    <x-courses/>
-    <x-getStarted/>
-    <x-faq/>
-    <x-footer/>
-    {{-- <x-course/> --}}
+    @include('partials._navbar')
+    @include('partials._hero')
+    @include('partials._whyUs')
+    @include('partials._getStarted')
+    @include('partials._faq')
+    @include('partials._footer')
 </body>
 </html>

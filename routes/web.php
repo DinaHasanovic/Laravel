@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Route::get('/', [CourseController::class, 'home']);
+
 // All Listings
- Route::get('/', [CourseController::class, 'index'] );
+Route::get('/', [CourseController::class, 'index'] );
 
 //Single Listing
 Route::get('/courses/{course}',[CourseController::class, 'show']);

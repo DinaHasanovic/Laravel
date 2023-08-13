@@ -1,3 +1,4 @@
+<x-layout>
 <link rel="stylesheet" href="{{ asset('css/course.css') }}">
 <div class="course_Body">
     <div class="courses_Item">
@@ -8,3 +9,4 @@
         </div>
     </div>
 </div>
+</x-layout>

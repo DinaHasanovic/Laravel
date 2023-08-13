@@ -6,8 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px;
-    background-color: #252422;
+    background-color: #1c1b1a;
     align-content: center;
     flex-wrap: nowrap;
   }
@@ -19,7 +18,7 @@
     font-weight: 400;
     font-style: normal;
     font-family: "Archivo", "Archivo Placeholder", sans-serif;
-    color: #ccc5b9;
+    color: white;
     font-size: 16px;
     letter-spacing: 0em;
     line-height: 1.5;
@@ -36,6 +35,7 @@
     font-family: "Noto Emoji", "Noto Emoji Placeholder", sans-serif;
     color: #eb5e28;
     font-size: 80px;
+    margin: 1%;
     letter-spacing: 0em;
     line-height: 1.2;
     text-align: center;
