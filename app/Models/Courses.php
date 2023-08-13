@@ -9,6 +9,8 @@ class Courses extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title','tags','description','price','duration'];
+
 
     public function scopeFilter($query, array $filters){
         if($filters['tag'] ?? false){

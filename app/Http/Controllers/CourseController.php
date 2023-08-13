@@ -24,7 +24,7 @@ class CourseController extends Controller
     
     //Show Form For Course Creation
     public function create(){
-        return view('components/create');
+        return view('components.create');
     }
 
     //Get Single Course
@@ -38,12 +38,14 @@ class CourseController extends Controller
     public function store(Request $request){
         // dd($request->all());
         $formFields = $request-> validate([
-            'naziv' => ['required', Rule::unique('courese','naziv')],
-            'opis' => 'required',
-            'trajanje' => 'required',
-            'tagovic' => 'required',
-            'cena' => 'required',
+            'title' => ['required', Rule::unique('courses','title')],
+            'description' => 'required',
+            'duration' => 'required',
+            'tags' => 'required',
+            'price' => 'required',
         ]);
+        Courses::create($formFields);
+
         return redirect('/');
     }
 }

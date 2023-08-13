@@ -1,40 +1,41 @@
 Course Form 
 To be Created....
-<form method="POST" action="/courses/create">
+<link rel="stylesheet" href="{{ asset('css/courses.css') }}">
+<form method="POST" action="/courses">
     @csrf
-    <label for="naziv">Naziv kursa:</label>
-    <input type="text" id="naziv" name="naziv"><br><br>
+    <label for="title">Naziv kursa:</label>
+    <input type="text" id="title" name="title"><br><br>
 
-    @error('naziv')
-    <p>{{$message}}</p>
+    @error('title')
+    <p class="errorMessage">{{$message}}</p>
     @enderror
 
-    <label for="opis">Opis kursa:</label><br>
-    <textarea id="opis" name="opis" rows="4" cols="50"></textarea><br><br>
+    <label for="description">Opis kursa:</label><br>
+    <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
 
-    @error('opis')
-    <p>{{$message}}</p>
+    @error('description')
+    <p class="errorMessage">{{$message}}</p>
     @enderror
 
-    <label for="trajanje">Trajanje kursa:</label>
-    <input type="text" id="trajanje" name="trajanje"><br><br>
+    <label for="duration">Trajanje kursa:</label>
+    <input type="text" id="duration" name="duration"><br><br>
 
-    @error('trajanje')
-    <p>{{$message}}</p>
+    @error('duration')
+    <p class="errorMessage">{{$message}}</p>
     @enderror
 
-    <label for="tagovi">Tagovi (odvojeni zarezima):</label>
-    <input type="text" id="tagovi" name="tagovi"><br><br>
+    <label for="tags">Tagovi (odvojeni zarezima):</label>
+    <input type="text" id="tags" name="tags"><br><br>
 
-    @error('tagovi')
-    <p>{{$message}}</p>
+    @error('tags')
+    <p class="errorMessage">{{$message}}</p>
     @enderror
 
-    <label for="cena">Cena kursa:</label>
-    <input type="number" id="cena" name="cena" min="0" step="0.01"><br><br>
+    <label for="price">Cena kursa:</label>
+    <input type="number" id="price" name="price" min="0" step="0.01"><br><br>
 
-    @error('cena')
-    <p>{{$message}}</p>
+    @error('price')
+    <p class="errorMessage">{{$message}}</p>
     @enderror
 
     <button type="submit">Dodaj Kurs</button>
