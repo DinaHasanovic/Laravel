@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <x-flash-message/> {{--flash Message(popup when course is created) --}}
 <body class="body">  
