@@ -11,7 +11,9 @@ To be Created....
     @enderror
 
     <label for="description">Opis kursa:</label><br>
-    <textarea id="description" name="description" rows="4" cols="50" value="{{old('description')}}"></textarea><br><br>
+    <textarea id="description" name="description" rows="4" cols="50">
+        {{old('description')}}    
+    </textarea><br><br>
 
     @error('description')
     <p class="errorMessage">{{$message}}</p>

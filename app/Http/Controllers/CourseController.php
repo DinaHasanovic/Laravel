@@ -18,7 +18,7 @@ class CourseController extends Controller
     public function index(){
         return view('components/courses/index', [
             'courses' => Courses::latest()->filter(request(['tag', 'search']))
-            ->get()
+            ->paginate(2)
         ]);
     }
     

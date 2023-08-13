@@ -21,6 +21,8 @@
         <p>No Courses Found :(</p>
         @endunless
     </div>
-    
+</div>
+<div class="p-6">
+    {{$courses->links()}}
 </div>
 </x-layout>
