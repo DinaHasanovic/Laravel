@@ -8,5 +8,15 @@
             <h3 class="course_Text">{{$course['description']}}</h3>
         </div>
     </div>
+    <div class="course_buttons">
+    <a href="/courses/{{$course->id}}/edit" class="course_button">Edit</a>
+    <a href="/" class="course_button">
+        <form method="POST" action="/courses/{{$course->id}}">
+        @csrf
+        @method('DELETE')
+        <button>Delete</button>
+    </form>
+    </a>
+    </div>
 </div>
 </x-layout>

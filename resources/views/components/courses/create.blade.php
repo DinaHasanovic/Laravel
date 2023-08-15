@@ -1,6 +1,4 @@
-Course Form 
-To be Created....
-<link rel="stylesheet" href="{{ asset('css/courses.css') }}">
+<link rel="stylesheet" href="{{ asset('css/form.css') }}">
 <form method="POST" action="/courses">
     @csrf
     <label for="title">Naziv kursa:</label>
