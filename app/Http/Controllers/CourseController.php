@@ -44,6 +44,9 @@ class CourseController extends Controller
             'tags' => 'required',
             'price' => 'required',
         ]);
+
+        // $formFields['user_id'] = auth()->id();
+
         Courses::create($formFields);
 
 
@@ -58,6 +61,12 @@ class CourseController extends Controller
 
     //Update Course Data
     public function update(Request $request, Courses $course){
+
+        //Make sure logged in user is owner
+        // if($course->user_id != auth()->id()){
+        //     abort(403,'Unauthorized Action');
+        // }
+
         $formFields = $request-> validate([
             'title' => ['required'],
             'description' => 'required',
@@ -74,6 +83,10 @@ class CourseController extends Controller
 
     //Delete Course
     public function destroy(Courses $course){
+
+        // if($course->user_id != auth()->id()){
+        //     abort(403,'Unauthorized Action');
+        // }
         $course->delete();
         return redirect('/')->with('message', "Course Deleted Successfully!");
     }

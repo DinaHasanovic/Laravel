@@ -24,4 +24,10 @@ class Courses extends Model
                   ->orWhere('tags','like','%' . request('search') . '%');;
         }
     }
+
+
+    //Relationship to User (First set up relations in database with migrations)
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
