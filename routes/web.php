@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,22 @@ Route::get('/', [CourseController::class, 'index'] );
 //Store Listing Data
 Route::post('/courses', [CourseController::class, 'store']);
 
+//Show Edit Form
+Route::get('/courses/{course}/edit',[CourseController::class, 'edit']);
+
+//Update Course
+Route::put('/courses/{course}', [CourseController::class, 'update']);
+
+//Delete Course
+Route::delete('/courses/{course}', [CourseController::class, 'destroy']);
+
 
 //Show Create Form
 Route::get('/courses/create', [CourseController::class, 'create']);
 
 //Single Listing
 Route::get('/courses/{course}',[CourseController::class, 'show']);
+
+
+//Show Register Create Form
+Route::get('/register', [UserController::class, 'create']);
