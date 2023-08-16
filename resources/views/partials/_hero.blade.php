@@ -5,8 +5,8 @@
         <p class="emoji">🎓</p>
         <p class="text_hero">Unleash Your Potential with Exciting Courses</p>
         <div class="buttons">
-        <button class="button_orange">Explore Courses</button>
-        <button class="button_white">Enroll Today</button>
+        <a href="/courses" class="button_orange">Explore Courses</a>
+        <a href="/register" class="button_white">Enroll Today</a>
         </div>
     </div>
 </div>

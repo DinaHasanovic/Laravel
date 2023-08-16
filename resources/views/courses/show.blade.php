@@ -9,12 +9,14 @@
         </div>
     </div>
     <div class="course_buttons">
-    <a href="/courses/{{$course->id}}/edit" class="course_button">Edit</a>
+    <a href="/courses/{{$course->id}}/edit" class="course_button">
+        <i class="fa-solid fa-pencil"></i>
+        Edit</a>
     <a href="/" class="course_button">
         <form method="POST" action="/courses/{{$course->id}}">
         @csrf
         @method('DELETE')
-        <button>Delete</button>
+        <button><i class="fa-solid fa-trash"></i>Delete</button>
     </form>
     </a>
     </div>

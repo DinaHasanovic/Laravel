@@ -16,7 +16,7 @@ class CourseController extends Controller
 
     //Get All Courses
     public function index(){
-        return view('components.courses.index', [
+        return view('courses.index', [
             'courses' => Courses::latest()->filter(request(['tag', 'search']))
             ->paginate(2)
         ]);
@@ -24,12 +24,12 @@ class CourseController extends Controller
     
     //Show Form For Course Creation
     public function create(){
-        return view('components.courses.create');
+        return view('courses.create');
     }
 
     //Get Single Course
     public function show(Courses $course){
-        return view('components.courses.show' , [
+        return view('courses.show' , [
             'course' => $course
         ]);
     }
@@ -55,7 +55,7 @@ class CourseController extends Controller
 
     //Show Edit Form
     public function edit(Courses $course){
-        return view('components.courses.edit', ['course' => $course]);
+        return view('courses.edit', ['course' => $course]);
     }
 
 
@@ -90,4 +90,9 @@ class CourseController extends Controller
         $course->delete();
         return redirect('/')->with('message', "Course Deleted Successfully!");
     }
+
+    //Manage Courses
+    // public function manage(){
+    //     return view('coursees.manage', ['courses' => auth()->user()->course()->get()]);
+    // }
 }

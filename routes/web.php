@@ -15,10 +15,12 @@ use App\Http\Controllers\CourseController;
 |
 */
 
-// Route::get('/', [CourseController::class, 'home']);
+
+Route::get('/', [CourseController::class, 'home']);
+
 
 // All Listings
-Route::get('/', [CourseController::class, 'index'] );
+Route::get('/courses', [CourseController::class, 'index'] );
 
 
 //Store Listing Data
@@ -33,6 +35,8 @@ Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware
 //Delete Course
 Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth');
 
+//Manage Courses
+Route::get('/courses/manage', [CourseController::class , 'manage'])->middleware('auth');
 
 //Show Create Form
 Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth');

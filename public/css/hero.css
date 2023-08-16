@@ -66,6 +66,13 @@
     border-radius: 9999px;
     border: 0px solid #252422;
     color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .button_orange:hover {
+    background-color: #c75223;
   }
 
 
@@ -85,6 +92,13 @@
     border-radius: 9999px;
     border: 0px solid #252422;
     color: #252422;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .button_white:hover {
+    background-color: #b1a097;
   }
 
   .emoji {
