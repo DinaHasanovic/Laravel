@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
 use App\Models\Courses;
 use Illuminate\Database\Seeder;
 
@@ -14,12 +15,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
+        $user = User::factory()->create([
+            'name' => 'Ertan Muslic',
+            'email' => 'ertanmuslic@gmail.com'
+        ]);
+
+        // Courses::factory(6)->create([
+        //     'user_id' => $user->id
+        // ]);
 
         Courses::create([
             'title' => 'Laravel Senior Developer',
             'tags' => 'laravel,javascript',
+            'user_id'=> $user->id,
             'description' => '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -32,6 +42,7 @@ class DatabaseSeeder extends Seeder
         Courses::create([
             'title' => 'Full-Stack Engineer',
             'tags' => 'laravel,backend,api',
+            'user_id'=> $user->id,
             'description' => '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -41,9 +52,6 @@ class DatabaseSeeder extends Seeder
             'price' => 300,
         ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+       
     }
 }

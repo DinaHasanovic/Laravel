@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -36,7 +37,6 @@ class CourseController extends Controller
 
     //Create Course
     public function store(Request $request){
-        // dd($request->all());
         $formFields = $request-> validate([
             'title' => ['required', Rule::unique('courses','title')],
             'description' => 'required',
@@ -45,7 +45,7 @@ class CourseController extends Controller
             'price' => 'required',
         ]);
 
-        // $formFields['user_id'] = auth()->id();
+         $formFields['user_id'] = auth()->id();
 
         Courses::create($formFields);
 
@@ -63,9 +63,9 @@ class CourseController extends Controller
     public function update(Request $request, Courses $course){
 
         //Make sure logged in user is owner
-        // if($course->user_id != auth()->id()){
-        //     abort(403,'Unauthorized Action');
-        // }
+        if($course->user_id != auth()->id()){
+            abort(403,'Unauthorized Action');
+        }
 
         $formFields = $request-> validate([
             'title' => ['required'],
@@ -84,15 +84,16 @@ class CourseController extends Controller
     //Delete Course
     public function destroy(Courses $course){
 
-        // if($course->user_id != auth()->id()){
-        //     abort(403,'Unauthorized Action');
-        // }
+        if($course->user_id != auth()->id()){
+            abort(403,'Unauthorized Action');
+        }
         $course->delete();
         return redirect('/')->with('message', "Course Deleted Successfully!");
     }
 
     //Manage Courses
-    // public function manage(){
-    //     return view('coursees.manage', ['courses' => auth()->user()->course()->get()]);
-    // }
+    public function manage(){
+
+        return view('courses.manage',['courses' => auth()->user()->courses()->get()]);
+    }
 }
