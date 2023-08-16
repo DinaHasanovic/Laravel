@@ -52,7 +52,7 @@ Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 Route::post('/users', [UserController::class, 'store']);
 
 //Log User Out
-Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 //Show Login Form
 Route::get('/login' , [UserController::class, 'login'])->name('login')->middleware('guest');

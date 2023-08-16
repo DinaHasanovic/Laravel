@@ -4,10 +4,8 @@
     $tagsArray = explode(',', $tags)
 @endphp
 
-<ul>
+<div class="courses_tags">
     @foreach ($tagsArray as $tag)
-        <li>
-            <a href="/?tag={{$tag}}">{{$tag}}</a>
-        </li>
+        <a href="/?tag={{$tag}}">{{$tag}}</a>
     @endforeach
-</ul>
+</div>
