@@ -3,7 +3,7 @@
     <div class="form_body">
         <div class="form_container">
             <div>
-            <h2>User Registration</h2>
+            <h2>User Login</h2>
             </div>
             <form  method="post" action="/users/authenticate">
             @csrf
