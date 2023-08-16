@@ -40,13 +40,17 @@ body {
     margin-right: 20px;
 }
 
-.nav-links a {
+.nav-links a,button {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s;
     font-family: 'Elsie', sans-serif;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,button:hover {
     color: #f39c12;
+}
+
+.user{
+    color: #d1d1d1;
 }
