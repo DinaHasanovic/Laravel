@@ -15,13 +15,11 @@ use App\Http\Controllers\CourseController;
 |
 */
 
-
+//Home Page
 Route::get('/', [CourseController::class, 'home']);
-
 
 // All Listings
 Route::get('/courses', [CourseController::class, 'index'] );
-
 
 //Store Listing Data
 Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
