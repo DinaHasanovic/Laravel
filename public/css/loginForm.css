@@ -44,6 +44,9 @@
     margin-bottom: 3%;
 }
 
+.form_container input,textarea{
+    border-radius: 8px;
+}
 
 .form_container button{
     border: none;

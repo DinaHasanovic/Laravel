@@ -18,4 +18,7 @@
 <div class="p-6">
     {{$courses->links()}}
 </div>
+<div>
+    <a href="/courses/create">Create Course</a>
+</div>
 </x-layout>

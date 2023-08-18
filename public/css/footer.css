@@ -1,6 +1,5 @@
 .footer {
     width: 100%;
-    height: min-content; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,7 +22,6 @@
     line-height: 1.5;
     text-align: center;
   }
-
 
 
   .image {
