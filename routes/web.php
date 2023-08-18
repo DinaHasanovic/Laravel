@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\CheckProfessor;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 
@@ -34,7 +35,7 @@ Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware
 Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth');
 
 //Manage Courses
-Route::get('/courses/manage', [CourseController::class , 'manage'])->middleware('auth');
+Route::get('/courses/manage', [CourseController::class , 'manage'])->middleware(['auth', CheckProfessor::class]);
 
 //Show Create Form
 Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth');
@@ -59,7 +60,7 @@ Route::get('/login' , [UserController::class, 'login'])->name('login')->middlewa
 Route::post('users/authenticate', [UserController::class, 'authenticate']);
 
 //Show Reset Password Form
-Route::get('users/{user}/resetPassword', [UserController::class,'reset']);
+Route::get('users/{user}/resetPassword', [UserController::class,'reset'])->middleware('auth');
 
 //Reset Password
 Route::post('users/{user}',[UserController::class,'resetPassword']);
