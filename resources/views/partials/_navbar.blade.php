@@ -10,7 +10,12 @@
             <li><a href="/courses">Courses</a></li>
             @auth
             <li><span class="user"> <i class="fa-solid fa-user"></i> {{auth()->user()->name}}</span></li>
+            @if(auth()->user()->role == 'professor')
             <li><a href="/courses/manage"><i class="fa-solid fa-gear"></i> Manage Courses</a></li>
+            @endif
+            @if (auth()->user()->role == 'admin')
+            <li><a href="/users/manage"><i class="fa-solid fa-gear"></i> Manage Users</a></li>
+            @endif
             <li>
                 <form action="/logout">
                     @csrf

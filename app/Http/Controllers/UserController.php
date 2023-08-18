@@ -55,6 +55,21 @@ class UserController extends Controller
         return view('users.login');
     }
 
+
+    //Delete User
+    public function destroy(User $user){
+
+        $user->delete();
+        return redirect('/')->with('message', "User Deleted Successfully!");
+    }
+
+    //Manage Users
+    public function manage(){
+        $adminId = auth()->user()->id;
+        $users = User::where('id', '!=', $adminId)->get();
+        return view('users.manage', ['users' => $users]);
+    }
+
     //Authenticate User
     public function authenticate(Request $request){
         $formFields = $request->validate([
@@ -90,4 +105,7 @@ class UserController extends Controller
         return redirect('/');
 
     }
+
+
+    
 }

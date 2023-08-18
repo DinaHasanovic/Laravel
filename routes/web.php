@@ -44,6 +44,15 @@ Route::get('/courses/create', [CourseController::class, 'create'])->middleware('
 Route::get('/courses/{course}',[CourseController::class, 'show']);
 
 
+
+
+
+//Manage Users
+Route::get('/users/manage', [UserController::class, 'manage'])->middleware('auth');
+
+//Delete User
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth');
+
 //Show Register Create Form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
