@@ -57,3 +57,9 @@ Route::get('/login' , [UserController::class, 'login'])->name('login')->middlewa
 
 //Login User
 Route::post('users/authenticate', [UserController::class, 'authenticate']);
+
+//Show Reset Password Form
+Route::get('users/{user}/resetPassword', [UserController::class,'reset']);
+
+//Reset Password
+Route::post('users/{user}',[UserController::class,'resetPassword']);

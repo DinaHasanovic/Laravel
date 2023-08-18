@@ -19,6 +19,7 @@
                     </button>
                 </form>
             </li>
+            <li><a href="/users/{{auth()->user()->id}}/resetPassword">Reset Password</a></li>
             @else
             <li><a href="/register"><i class="fa-solid fa-user-plus"></i> Register</a></li>
             <li><a href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>

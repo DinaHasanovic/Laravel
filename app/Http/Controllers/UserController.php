@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -64,6 +65,25 @@ class UserController extends Controller
         }
 
         return back()->withErrors(['email'=> 'Invalid Credentials'])->onlyInput('email');
+
+    }
+
+    //Show Reset Password Form
+    public function reset(User $user){
+        return view('users.resetPassword', ['user' => $user]);
+    }
+
+    //Reset Password
+    public function resetPassword(Request $request,User $user){
+        $formFields = $request->validate([
+            'password' => ['required','min:6','confirmed']
+        ]);
+
+        $user->update([
+            'password' => Hash::make($formFields['password']),
+        ]);
+
+        return redirect('/');
 
     }
 }
