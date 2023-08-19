@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Notifications\VerifyEmail;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
@@ -32,12 +36,30 @@ class UserController extends Controller
         //Create User
         $user = User::create($formFields);
 
+        $user->sendEmailVerificationNotification();
+
         
         //Login
         auth()->login($user);
 
 
-        return redirect('/')->with('message','User created and logged in');
+        return redirect('/resend-verification')->with('message','User created and logged in');
+    }
+
+
+    //Send Verification Email
+    public function sendEmailVerificationNotification(User $user)
+    {
+        // $verificationUrl = URL::temporarySignedRoute(
+        //     'verification.verify',
+        //     now()->addMinutes(config('auth.verification.expire', 60)),
+        //     [
+        //         'id' => $user->getKey(),
+        //         'hash' => sha1($user->getEmailForVerification()),
+        //     ]
+        // );
+
+        $user->notify(new VerifyEmail); // Send the verification notification
     }
 
     //Log User Out
@@ -81,8 +103,8 @@ class UserController extends Controller
             $request->session()->regenerate();
 
             return redirect('/')->with('message','You are now logged in!');
-        }
-
+       
+    }
         return back()->withErrors(['email'=> 'Invalid Credentials'])->onlyInput('email');
 
     }
@@ -106,6 +128,21 @@ class UserController extends Controller
 
     }
 
+    //Show Resend Email Verification Form
+    public function showResendVerificationForm(){
+        return view('components.verification-notice');
+    }
 
+    //Resend Email Verification
+    public function resend(Request $request)
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect()->route('home')->with('status', 'Your email is already verified.');
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('status', 'Verification link has been sent to your email address.');
+    }
     
 }

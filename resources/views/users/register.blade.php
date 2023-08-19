@@ -40,6 +40,7 @@
                 <button type="submit">Sign Up</button>
 
                 <p style="text-align: center; margin-bottom:5%">Have an Account? <a href="/login">Login Here</a></p>
+
             </form>
         </div>
     </div>

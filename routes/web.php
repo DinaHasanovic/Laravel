@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckProfessor;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,16 @@ use App\Http\Controllers\CourseController;
 |
 */
 
+
+
 //Home Page
 Route::get('/', [CourseController::class, 'home']);
 
-// All Listings
+
+//Courses
+
+
+// All Courses
 Route::get('/courses', [CourseController::class, 'index'] );
 
 //Store Listing Data
@@ -45,6 +52,8 @@ Route::get('/courses/{course}',[CourseController::class, 'show']);
 
 
 
+
+//Users
 
 
 //Manage Users
@@ -73,3 +82,31 @@ Route::get('users/{user}/resetPassword', [UserController::class,'reset'])->middl
 
 //Reset Password
 Route::post('users/{user}',[UserController::class,'resetPassword']);
+
+
+//Email Verification
+
+
+//Send Email Verification
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+
+//Receive Email Verification
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+
+//Resend Verification Email
+Route::get('/email/resend', [UserController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
+
+
+
+//Show Resend Verification Email Form
+Route::get('/resend-verification', [UserController::class, 'showResendVerificationForm'])
+    ->name('resend-verification');
