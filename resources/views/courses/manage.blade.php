@@ -2,7 +2,7 @@
 <x-layout>
     <h1 class="heading">Course Management</h1>
     @unless ($courses->isEmpty())
-    <div class="container">
+    <div class="manage_container">
         <table>
             <thead>
                 <tr>

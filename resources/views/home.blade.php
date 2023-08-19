@@ -17,6 +17,9 @@
     @include('partials._whyUs')
     @include('partials._getStarted')
     @include('partials._faq')
-    @include('partials._footer')
+    
+    <footer>
+        @include('partials._footer')
+    </footer>
 </body>
 </html>

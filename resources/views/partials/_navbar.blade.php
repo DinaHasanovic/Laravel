@@ -5,6 +5,11 @@
 <nav class="navbar">
     <div class="container">
         <a href="/" class="logo">Online Courses</a>
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <ul class="nav-links">                
             <li><a href="/">Home</a></li>
             <li><a href="/courses">Courses</a></li>
@@ -31,4 +36,5 @@
             @endauth
         </ul>
     </div>
+    
 </nav>

@@ -5,7 +5,7 @@
     font-size: 28px;
 }
 
-.container {
+.manage_container {
     max-width: 80%;
     margin: 0 auto;
     padding: 20px;
@@ -16,6 +16,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    border-spacing: 0 10px;
     margin-top: 20px;
     color: white;
 }
@@ -40,13 +41,23 @@ td.actions, th.actions {
     border-left: none;
 }
 
-.courses_rows{
-    border-bottom: 1px solid #ddd;
+.courses_rows, .users_rows{
+    border-bottom: 15px solid transparent;
 }
 
-.courses_rows:last-child{
+.courses_rows:last-child, .users_rows:last-child{
     border-bottom: none;
 }
+
+
+.courses_rows:nth-child(even), .users_rows:nth-child(even){
+    background-color: #333; 
+}
+
+.courses_rows:nth-child(odd), .users_rows:nth-child(odd){
+    background-color: #444; 
+}
+
 
 .edit-button,.delete-button {
     padding: 5px 10px;

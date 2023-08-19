@@ -2,7 +2,7 @@
 <x-layout>
     <h1 class="heading">User Management</h1>
     @unless ($users->isEmpty())
-    <div class="container">
+    <div class="manage_container">
         <table>
             <thead>
                 <tr>

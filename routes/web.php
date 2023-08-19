@@ -84,6 +84,8 @@ Route::get('users/{user}/resetPassword', [UserController::class,'reset'])->middl
 Route::post('users/{user}',[UserController::class,'resetPassword']);
 
 
+
+
 //Email Verification
 
 
