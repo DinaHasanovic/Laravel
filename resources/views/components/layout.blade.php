@@ -15,11 +15,11 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<x-flash-message/> {{--flash Message(popup when course is created) --}}
 <body class="body">  
     @include('partials._navbar')
     <div class="main-content">
         @include('partials._search')
+        <x-flash-message/> {{--flash Message(popup when course is created) --}}
         {{$slot}}
     </div>
 <footer>

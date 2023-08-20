@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckProfessor;
 use App\Http\Controllers\UserController;
@@ -57,7 +58,7 @@ Route::get('/courses/{course}',[CourseController::class, 'show']);
 
 
 //Manage Users
-Route::get('/users/manage', [UserController::class, 'manage'])->middleware('auth');
+Route::get('/users/manage', [UserController::class, 'manage'])->middleware(['auth',CheckAdmin::class]);
 
 //Delete User
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth');
