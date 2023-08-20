@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/search.css') }}">
+<link rel="stylesheet" href="{{ asset('css/partials/search.css') }}">
 <form action="/courses">
     <div class="search-container">
         <input type="text" placeholder="Search courses..." name="search">

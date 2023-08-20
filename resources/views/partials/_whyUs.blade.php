@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/whyUs.css') }}">
+<link rel="stylesheet" href="{{ asset('css/partials/whyUs.css') }}">
 <div class="WhyChooseUs_Body">
     <div class="WhyChooseUs_content">
         <h2 class="Why_Choose_Us">

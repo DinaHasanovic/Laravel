@@ -1,5 +1,5 @@
 <x-layout>
-    <link rel="stylesheet" href="{{ asset('css/loginForm.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/forms/loginForm.css') }}">
     <div class="form_body">
         <div class="form_container">
             <div>

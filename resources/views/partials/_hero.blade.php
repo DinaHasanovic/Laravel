@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/hero.css') }}">
+<link rel="stylesheet" href="{{ asset('css/partials/hero.css') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Elsie&display=swap">
 <div class="hero">
     <div class="content">

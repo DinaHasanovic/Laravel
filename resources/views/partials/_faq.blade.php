@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/faq.css') }}">
+<link rel="stylesheet" href="{{ asset('css/partials/faq.css') }}">
 <div class="faq">
     <h2 class="faq_Title">Frequently Asked Questions</h2>
     <div class="faq-questions_row">
