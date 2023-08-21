@@ -96,4 +96,7 @@ class CourseController extends Controller
 
         return view('courses.manage',['courses' => auth()->user()->courses()->get()]);
     }
+
+
+    
 }

@@ -7,6 +7,7 @@
             <thead>
                 <tr>
                     <th>Courses</th>
+                    <th>Enrolled Students</th>
                     <th class="actions">Actions</th>
                 </tr>
             </thead>
@@ -14,6 +15,13 @@
                 @foreach ($courses as $course)
                 <tr class="courses_rows">
                     <td class="course-name"><a href="/courses/{{$course->id}}">{{$course->title}}</a></td>
+                    <td>
+                        @foreach ($course->enrolledStudents as $student)
+                            {{$student->name}} 
+                            @if (!$loop->last),
+                            @endif
+                        @endforeach
+                    </td>
                     <td class="actions">
                         <button class="edit-button"><a href="/courses/{{$course->id}}/edit""><i class="fa-solid fa-pencil"></i>  Edit</a></button>
                             <form style="display: inline;" method="POST" action="/courses/{{$course->id}}">

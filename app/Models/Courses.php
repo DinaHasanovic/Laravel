@@ -31,4 +31,9 @@ class Courses extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    //Relationship with User(Student)
+    public function enrolledStudents(){
+        return $this->belongsToMany(User::class, 'course_user' , 'course_id' , 'user_id');
+    }
 }

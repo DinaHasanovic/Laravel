@@ -21,6 +21,15 @@
                 <a href="/" class="course_button_material">
                     <i class="fas fa-book"></i>
                     View Material</a>
+                @if (auth()->user()-> role === 'student')
+                    <form action="/courses/{{$course->id}}/enroll" method="POST">
+                        @csrf
+                        <button type="submit">
+                            <i class="fas fa-check-circle"></i>
+                            Enroll
+                        </button>
+                    </form>
+                @endif
             </div>
         </div>
     </div>

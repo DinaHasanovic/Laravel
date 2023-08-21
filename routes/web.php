@@ -85,6 +85,10 @@ Route::get('users/{user}/resetPassword', [UserController::class,'reset'])->middl
 Route::post('users/{user}',[UserController::class,'resetPassword']);
 
 
+//Enroll into course
+Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent']);
+
+
 
 
 //Email Verification
@@ -113,3 +117,5 @@ Route::get('/email/resend', [UserController::class, 'resend'])->middleware(['aut
 //Show Resend Verification Email Form
 Route::get('/resend-verification', [UserController::class, 'showResendVerificationForm'])
     ->name('resend-verification');
+
+

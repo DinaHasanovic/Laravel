@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Courses;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Notifications\VerifyEmail;
@@ -143,6 +144,23 @@ class UserController extends Controller
         $request->user()->sendEmailVerificationNotification();
 
         return back()->with('status', 'Verification link has been sent to your email address.');
+    }
+
+    //Enroll Student into Course
+    public function enrollStudent(Courses $course){
+        if(!$course){
+            return back()->with('message',"Course not found");
+        }
+
+        $student = auth()->user();
+
+        if($course->enrolledStudents->contains($student)){
+            return back()->with('message','Already enrolled');
+        }
+
+        $course->enrolledStudents()->attach($student);
+
+        return back()->with('message','Enrolled successfully');
     }
     
 }
