@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\CourseMaterial;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -35,5 +36,9 @@ class Courses extends Model
     //Relationship with User(Student)
     public function enrolledStudents(){
         return $this->belongsToMany(User::class, 'course_user' , 'course_id' , 'user_id');
+    }
+
+    public function materials(){
+        return $this->hasMany(CourseMaterial::class, 'course_id');
     }
 }

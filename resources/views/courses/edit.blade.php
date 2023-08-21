@@ -52,6 +52,15 @@
         
             <button type="submit">Update Course</button>
         </form>
+
+        <form action="/courses/{{$course->id}}/materials" method="POST" enctype="multipart/form-data">
+            @csrf
+            <label for="title">Material Title:</label>
+            <input type="text" name="title" required>
+            <label for="file">Upload Material:</label>
+            <input type="file" name="file" required>
+            <button type="submit">Upload Material</button>
+        </form>
     </div>
 </div>
 </x-layout>

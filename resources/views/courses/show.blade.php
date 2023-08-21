@@ -18,7 +18,7 @@
                 <a href="/courses/{{$course->id}}/edit" class="course_button_test">
                     <i class="fas fa-pencil-alt"></i>
                     Start Test</a>
-                <a href="/" class="course_button_material">
+                <a href="/courses/{{$course->id}}/material" class="course_button_material">
                     <i class="fas fa-book"></i>
                     View Material</a>
                 @if (auth()->user()-> role === 'student')
