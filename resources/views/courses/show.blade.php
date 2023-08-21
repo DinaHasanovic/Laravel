@@ -1,14 +1,32 @@
 <x-layout>
 <link rel="stylesheet" href="{{ asset('css/course.css') }}">
 <div class="course_Body">
-    <div class="courses_Item">
-        <div class="course_Image"></div>
-        <div class="course_Content">
+    <div class="course_Container">
+        <div class="course_Image">
+
+        </div>
+        <div class="course_Info">
             <h2 class="course_Title">{{$course['title']}}</h2>
-            <h3 class="course_Text">{{$course['description']}}</h3>
+            <h3 class="course_Description">{{$course['description']}}</h3>
+            <div class="course_Details">
+                <p><strong>Professor:</strong><span> {{$course->user->name}}</span></p>
+                <p><strong>Tags:</strong><x-course-tags :tags="$course->tags" /></p>
+                <p><strong>Duration:</strong><span> {{$course['duration']}} hours</span></p>
+                <p><strong>Materials:</strong><span> Video Lectures, PDFs</span></p>
+            </div>
+            <div class="course_buttons">
+                <a href="/courses/{{$course->id}}/edit" class="course_button_test">
+                    <i class="fas fa-pencil-alt"></i>
+                    Start Test</a>
+                <a href="/" class="course_button_material">
+                    <i class="fas fa-book"></i>
+                    View Material</a>
+            </div>
         </div>
     </div>
-    <div class="course_buttons">
+
+
+    {{-- <div class="course_buttons">
     <a href="/courses/{{$course->id}}/edit" class="course_button">
         <i class="fa-solid fa-pencil"></i>
         Edit</a>
@@ -19,6 +37,8 @@
         <button><i class="fa-solid fa-trash"></i>Delete</button>
     </form>
     </a>
-    </div>
+    </div> --}}
+
+    
 </div>
 </x-layout>
