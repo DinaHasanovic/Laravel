@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\TestAttempt;
 use Illuminate\Http\Request;
 use App\Models\TestQuestions;
 
@@ -80,6 +81,16 @@ class QuestionsController extends Controller
         
         if ($request->has('submit_test')) {
             $score = $this->calculateScore($questions, $answers, $help_question, $difficulty);
+
+            $testAttempt = TestAttempt::create([
+                'user_id' => auth()->user()->id,
+                'test_attempt_number' => TestAttempt::where('user_id', auth()->user()->id)->count() + 1,
+                'score' => $score,
+                ]);
+
+
+          
+
             return back()->with('message', "Test submitted! Your score: {$score}%");
         }
         

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Courses;
+use App\Models\TestAttempt;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -55,6 +56,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     //Relationship with courses(Student)
     public function enrolledCourses(){
-        return $this->belongsToMany(Courses::class, 'course_user' , 'course_id' , 'user_id');
+        return $this->belongsToMany(Courses::class, 'course_user' , 'user_id' , 'course_id');
     }
+
+    public function testAttemtps(){
+
+        return $this->hasMany(TestAttempt::class, 'user_id');
+    }
+
 }

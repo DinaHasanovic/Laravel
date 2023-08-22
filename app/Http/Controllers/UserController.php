@@ -160,7 +160,16 @@ class UserController extends Controller
 
         $course->enrolledStudents()->attach($student);
 
+
         return back()->with('message','Enrolled successfully');
     }
     
+
+    //Enrolled Coureses History
+    public function enrolledCoursesHistory(User $user){
+
+        $enrolledCourses = $user->courses;
+        $testScores = $user->testAttemtps->pluck('score', 'id');
+        return view('users.courseHistory', ['user' => $user, 'testScores' => $testScores, 'enrolledCourses' => $enrolledCourses]);
+    }
 }

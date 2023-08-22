@@ -6,6 +6,7 @@ use App\Http\Middleware\CheckProfessor;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\TestAttemptController;
 use App\Http\Controllers\CourseMaterialController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -106,6 +107,9 @@ Route::get('courses/{course}/take-test', [QuestionsController::class, 'takeTest'
 
 //Show Test Results
 Route::post('courses/{course}/submit-test', [QuestionsController::class,'submitTest']);
+
+//Show Course and Test History
+Route::get('users/{user}/history', [UserController::class, 'enrolledCoursesHistory']);
 
 
 
