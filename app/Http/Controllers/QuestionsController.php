@@ -42,36 +42,77 @@ class QuestionsController extends Controller
     }
 
 
-    //Submit Test and get score
-    public function submitTest(Request $request, Courses $course){
-        
-        $difficulty = $request->difficulty; 
-        $questions = $request->input('shown_questions', []); 
-        $answers = $request->input('answers');
 
-
+    public function calculateScore($questions, $answers, $help_question, $difficulty) {
         $shownQuestions = TestQuestions::whereIn('id', $questions)->get();
     
         $totalQuestions = count($shownQuestions);
         $correctAnswers = 0;
-
+        $helpCorrectAnswers = 0;
+    
         foreach ($shownQuestions as $question) {
             $questionId = $question->id;
             if (isset($answers[$questionId]) && $answers[$questionId] === $question->question_answer) {
                 $correctAnswers++;
+                if ($help_question && $help_question === $questionId) {
+                    $helpCorrectAnswers++;
+                }
             }
         }
-
-
-
+    
+        // Calculate score based on regular and help answers
+        $score = ($correctAnswers + ($helpCorrectAnswers * 0.5)) / $totalQuestions * 100;
+    
         if ($totalQuestions === 0) {
             $score = 0;
-        } else {
-            $score = ($correctAnswers / $totalQuestions) * 100;
         }
-
-        return back()->with('message', "Test submitted! Your score: {$score}%");
+    
+        return $score;
     }
-    
-    
+
+
+    //Submit Test and get score
+    public function submitTest(Request $request, Courses $course) {
+        $difficulty = $request->difficulty; 
+        $questions = $request->input('shown_questions', []); 
+        $answers = $request->input('answers');
+        $help_question = $request->input('help_question');
+        
+        if ($request->has('submit_test')) {
+            $score = $this->calculateScore($questions, $answers, $help_question, $difficulty);
+            return back()->with('message', "Test submitted! Your score: {$score}%");
+        }
+        
+        // If request help button is clicked, replace the question and redirect back
+        if ($help_question) {
+            // Replace the current question with a new one
+            $newQuestion = TestQuestions::where('difficulty', $difficulty)
+                ->whereNotIn('id', $questions) // Exclude already shown questions
+                ->inRandomOrder() // Get a random question
+                ->first();
+            
+            if ($newQuestion) {
+                // Update the shown questions array to include the new question's ID
+                $questions[] = $newQuestion->id;
+                // Remove the previous question's ID from the array
+                $questions = array_diff($questions, [$help_question]);
+                // Store the new question's ID in the session
+                session(['new_question' => $newQuestion->id]);
+                // Redirect back with a success message
+                return back()->with('success', 'Question replaced.');
+            } else {
+                // If no more questions are available
+                return back()->with('message', 'No more questions available.');
+            }
+        }
+        
+        // Calculate the score, considering the new question's point value
+        $newQuestionId = session('new_question');
+        $newQuestionValue = 0.5; // Adjust the point value as needed
+        $score = $this->calculateScore($questions, $answers, $newQuestionId, $difficulty) + $newQuestionValue;
+        
+        return view('courses.questions.index', compact('course', 'questions', 'score'));
+    }
+
+
 }

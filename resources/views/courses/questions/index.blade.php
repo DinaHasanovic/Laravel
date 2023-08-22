@@ -9,7 +9,6 @@
         <button type="submit">Start Test</button>
     </form>
     
-    
     <form action="/courses/{{$course->id}}/submit-test" method="POST">
         @csrf
         <input type="hidden" name="difficulty" value="{{ request('difficulty') }}">
@@ -18,12 +17,14 @@
                 <h3>{{$question->question_text}}</h3>
                 <input type="text" name="answers[{{$question->id}}]" >
                 <input type="hidden" name="shown_questions[]" value="{{$question->id}}">
+                <button type="submit" name="help_question" value='{{$question->id}}' formnovalidate>Request help</button>
             </div>
         @endforeach
-        <button type="submit">Submit Test</button>
-    </form>
-    
+        <button type="submit" name="submit_test">Submit Test</button>
 
+    </form>
+
+    
     @if(session('success'))
     <div class="success-message">
         {{ session('success') }}
