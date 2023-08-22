@@ -8,7 +8,7 @@ use App\Models\CourseMaterial;
 
 class CourseMaterialController extends Controller
 {
-    
+    //Upload Course Material
     public function uploadMaterial(Request $request,Courses $course){
         
         //Validate Inputs
@@ -31,6 +31,7 @@ class CourseMaterialController extends Controller
     }
 
 
+    //Show Course Material
     public function showMaterials(Courses $course){
         
         $courseMaterials = $course->materials;

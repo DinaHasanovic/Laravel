@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CheckAdmin;
+use App\Http\Middleware\CheckStudent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckProfessor;
 use App\Http\Controllers\UserController;
@@ -33,23 +34,23 @@ Route::get('/', [CourseController::class, 'home']);
 // All Courses
 Route::get('/courses', [CourseController::class, 'index'] );
 
-//Store Listing Data
-Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
+//Store Course Data
+Route::post('/courses', [CourseController::class, 'store'])->middleware(['auth',CheckProfessor::class]);
 
 //Show Edit Form
-Route::get('/courses/{course}/edit',[CourseController::class, 'edit'])->middleware('auth');
+Route::get('/courses/{course}/edit',[CourseController::class, 'edit'])->middleware(['auth',CheckProfessor::class]);
 
 //Update Course
-Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware('auth');
+Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware(['auth',CheckProfessor::class]);
 
 //Delete Course
-Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth');
+Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware(['auth',CheckProfessor::class]);
 
 //Manage Courses
 Route::get('/courses/manage', [CourseController::class , 'manage'])->middleware(['auth', CheckProfessor::class]);
 
 //Show Create Form
-Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth');
+Route::get('/courses/create', [CourseController::class, 'create'])->middleware(['auth',CheckProfessor::class]);
 
 //Single Course
 Route::get('/courses/{course}',[CourseController::class, 'show']);
@@ -64,7 +65,7 @@ Route::get('/courses/{course}',[CourseController::class, 'show']);
 Route::get('/users/manage', [UserController::class, 'manage'])->middleware(['auth',CheckAdmin::class]);
 
 //Delete User
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware(['auth',CheckAdmin::class]);
 
 //Show Register Create Form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
@@ -91,16 +92,16 @@ Route::post('users/{user}',[UserController::class,'resetPassword']);
 
 
 //Enroll into course
-Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent']);
+Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent'])->middleware(['auth',CheckStudent::class]);
 
 //Add Course Materials
-Route::post('courses/{course}/materials', [CourseMaterialController::class, 'uploadMaterial']);
+Route::post('courses/{course}/materials', [CourseMaterialController::class, 'uploadMaterial'])->middleware(['auth',CheckProfessor::class]);
 
 //Show Course Material
-Route::get('courses/{course}/material', [CourseMaterialController::class,'showMaterials']);
+Route::get('courses/{course}/material', [CourseMaterialController::class,'showMaterials'])->middleware('auth');
 
 //Add Course Test Questions
-Route::post('courses/{course}/questions', [QuestionsController::class,'setupQuestion']);
+Route::post('courses/{course}/questions', [QuestionsController::class,'setupQuestion'])->middleware(['auth',CheckProfessor::class]);
 
 //Show Test Questions
 Route::get('courses/{course}/take-test', [QuestionsController::class, 'takeTest']);
@@ -109,9 +110,16 @@ Route::get('courses/{course}/take-test', [QuestionsController::class, 'takeTest'
 Route::post('courses/{course}/submit-test', [QuestionsController::class,'submitTest']);
 
 //Show Course and Test History
-Route::get('users/{user}/history', [UserController::class, 'enrolledCoursesHistory']);
+Route::get('users/{user}/history', [UserController::class, 'enrolledCoursesHistory'])->middleware(['auth',CheckStudent::class]);
 
-Route::get('users/{user}/test-results', [UserController::class, 'showTests']);
+//Show Test Results
+Route::get('users/{user}/test-results', [UserController::class, 'showTests'])->middleware(['auth',CheckProfessor::class]);
+
+
+
+
+
+
 
 
 //Email Verification
@@ -121,6 +129,7 @@ Route::get('users/{user}/test-results', [UserController::class, 'showTests']);
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
+
 
 
 //Receive Email Verification

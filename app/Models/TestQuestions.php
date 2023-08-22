@@ -13,6 +13,7 @@ class TestQuestions extends Model
 
     protected $fillable = ['course_id','difficulty','question_text','question_answer'];
 
+    //Relationship with course (Every course has question for a test for that course)
     public function course(){
         return $this->belongsTo(Courses::class);
     }

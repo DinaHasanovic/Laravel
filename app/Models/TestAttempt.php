@@ -15,11 +15,13 @@ class TestAttempt extends Model
     protected $fillable = ['user_id', 'course_id', 'test_attempt_number', 'score'];
 
 
+    //Relationship with TestQuestion(attempts can be made for multiple questions)
     public function testQuestions()
     {
         return $this->hasMany(TestQuestions::class);
     }
 
+    //Relationship with Course(Every test result belongs to some course)
     public function course()
 {
     return $this->belongsTo(Courses::class);

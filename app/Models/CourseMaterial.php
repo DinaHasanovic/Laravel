@@ -13,6 +13,8 @@ class CourseMaterial extends Model
 
     protected $fillable = ['course_id','title','file_path'];
 
+
+    //Course has Study Material 
     public function course(){
         return $this->belongsTo(Courses::class, 'course_id');
     }

@@ -43,7 +43,7 @@ class QuestionsController extends Controller
     }
 
 
-
+    //Calculate Test Score
     public function calculateScore($questions, $answers, $help_question, $difficulty) {
         $shownQuestions = TestQuestions::whereIn('id', $questions)->get();
     

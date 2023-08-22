@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
+
     // Show Register/Create Form
     public function create(){
         return view('users.register');
     }
+
 
     //Create New User
     public function store(Request $request){
@@ -63,6 +65,7 @@ class UserController extends Controller
         $user->notify(new VerifyEmail); // Send the verification notification
     }
 
+
     //Log User Out
     public function logout(Request $request){
         auth()->logout();
@@ -72,6 +75,7 @@ class UserController extends Controller
 
         return redirect('/')->with('message','You have been logged out');
     }
+
 
     //Show Login Form
     public function login(){
@@ -86,12 +90,14 @@ class UserController extends Controller
         return redirect('/')->with('message', "User Deleted Successfully!");
     }
 
+
     //Manage Users
     public function manage(){
         $adminId = auth()->user()->id;
         $users = User::where('id', '!=', $adminId)->get();
         return view('users.manage', ['users' => $users]);
     }
+
 
     //Authenticate User
     public function authenticate(Request $request){
@@ -110,10 +116,12 @@ class UserController extends Controller
 
     }
 
+
     //Show Reset Password Form
     public function reset(User $user){
         return view('users.resetPassword', ['user' => $user]);
     }
+
 
     //Reset Password
     public function resetPassword(Request $request,User $user){
@@ -129,10 +137,12 @@ class UserController extends Controller
 
     }
 
+
     //Show Resend Email Verification Form
     public function showResendVerificationForm(){
         return view('components.verification-notice');
     }
+
 
     //Resend Email Verification
     public function resend(Request $request)
@@ -145,6 +155,7 @@ class UserController extends Controller
 
         return back()->with('status', 'Verification link has been sent to your email address.');
     }
+
 
     //Enroll Student into Course
     public function enrollStudent(Courses $course){
@@ -173,6 +184,8 @@ class UserController extends Controller
         return view('users.courseHistory', ['user' => $user, 'testScores' => $testScores, 'enrolledCourses' => $enrolledCourses]);
     }
 
+
+    //Show Tests result of a specific course and calculate average score
     public function showTests(User $user){
         $professor = auth()->user();
 

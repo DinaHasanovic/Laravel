@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class TestAttemptController extends Controller
 {
+    //Show Test Result of a Student for a specific Course
     public function index(User $user){
         
-
     // dd($user->testAttemtps);
     $testScored = $user->testAttemtps->pluck('score','id');
         return view('users.test_attempts', compact('testScored'));

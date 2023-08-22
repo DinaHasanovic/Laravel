@@ -14,6 +14,7 @@ class Courses extends Model
     protected $fillable = ['title','tags','description','price','duration','user_id'];
 
 
+    //Filter for search (name,tags,description)
     public function scopeFilter($query, array $filters){
         if($filters['tag'] ?? false){
             $query->where('tags','like','%' . request('tag') . '%');
@@ -38,14 +39,17 @@ class Courses extends Model
         return $this->belongsToMany(User::class, 'course_user' , 'course_id' , 'user_id');
     }
 
+    //Relationship with course study material
     public function materials(){
         return $this->hasMany(CourseMaterial::class, 'course_id');
     }
 
+    //Relationship with questions(Course has questions for the test)
     public function questions(){
         return $this->hasMany(TestQuestions::class,'course_id');
     }
 
+    //Relationship with testAttempts(to get scores of a students for a specific course)
     public function testAttempts()
 {
     return $this->hasMany(TestAttempt::class, 'course_id');

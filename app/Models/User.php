@@ -49,16 +49,17 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
-    //Relationship with courses(Professor)
+    //Relationship with courses(Professor, Which Professor created course)
     public function courses(){
         return $this->hasMany(Courses::class, 'user_id');
     }
 
-    //Relationship with courses(Student)
+    //Relationship with courses(Student, Show which student enrolled in which course)
     public function enrolledCourses(){
         return $this->belongsToMany(Courses::class, 'course_user' , 'user_id' , 'course_id');
     }
 
+    //Relationship with testAttempts (Every student can take test)
     public function testAttemtps(){
 
         return $this->hasMany(TestAttempt::class, 'user_id');

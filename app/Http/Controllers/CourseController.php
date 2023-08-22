@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 class CourseController extends Controller
 {
 
+    //Home Page
     public function home(){
         return view('home');
     }
@@ -23,6 +24,7 @@ class CourseController extends Controller
         ]);
     }
     
+
     //Show Form For Course Creation
     public function create(){
         return view('courses.create');
@@ -34,6 +36,7 @@ class CourseController extends Controller
             'course' => $course
         ]);
     }
+
 
     //Create Course
     public function store(Request $request){
@@ -52,6 +55,7 @@ class CourseController extends Controller
 
         return redirect('/')-> with('message','Course Created Successfuly!');
     }
+
 
     //Show Edit Form
     public function edit(Courses $course){
@@ -81,6 +85,7 @@ class CourseController extends Controller
         return back()->with('message','Course Updated Successfuly!');
     }
 
+
     //Delete Course
     public function destroy(Courses $course){
 
@@ -90,6 +95,7 @@ class CourseController extends Controller
         $course->delete();
         return redirect('/')->with('message', "Course Deleted Successfully!");
     }
+
 
     //Manage Courses
     public function manage(){
