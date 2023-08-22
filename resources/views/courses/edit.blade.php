@@ -61,6 +61,23 @@
             <input type="file" name="file" required>
             <button type="submit">Upload Material</button>
         </form>
+
+
+        <form action="/courses/{{$course->id}}/questions" method="POST">
+            @csrf
+            <label for="difficulty">Difficulty:</label>
+            <select name="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <label for="question_text">Question:</label>
+            <input type="text" name="question_text" >
+            <label for="correct_answer">Correct Answer:</label>
+            <input type="text" name="correct_answer" >
+            <button type="submit">Add Question</button>
+        </form>
+        
     </div>
 </div>
 </x-layout>

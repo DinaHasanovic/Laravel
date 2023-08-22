@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckProfessor;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\CourseMaterialController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -86,15 +87,25 @@ Route::get('users/{user}/resetPassword', [UserController::class,'reset'])->middl
 Route::post('users/{user}',[UserController::class,'resetPassword']);
 
 
+
+
 //Enroll into course
 Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent']);
-
 
 //Add Course Materials
 Route::post('courses/{course}/materials', [CourseMaterialController::class, 'uploadMaterial']);
 
 //Show Course Material
 Route::get('courses/{course}/material', [CourseMaterialController::class,'showMaterials']);
+
+//Add Course Test Questions
+Route::post('courses/{course}/questions', [QuestionsController::class,'setupQuestion']);
+
+//Show Test Questions
+Route::get('courses/{course}/take-test', [QuestionsController::class, 'takeTest']);
+
+//Show Test Results
+Route::post('courses/{course}/submit-test', [QuestionsController::class,'submitTest']);
 
 
 

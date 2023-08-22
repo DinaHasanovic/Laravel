@@ -15,7 +15,7 @@
                 <p><strong>Materials:</strong><span> Video Lectures, PDFs</span></p>
             </div>
             <div class="course_buttons">
-                <a href="/courses/{{$course->id}}/edit" class="course_button_test">
+                <a href="/courses/{{$course->id}}/take-test" class="course_button_test">
                     <i class="fas fa-pencil-alt"></i>
                     Start Test</a>
                 <a href="/courses/{{$course->id}}/material" class="course_button_material">
