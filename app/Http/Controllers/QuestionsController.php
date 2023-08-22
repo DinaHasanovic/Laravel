@@ -84,6 +84,7 @@ class QuestionsController extends Controller
 
             $testAttempt = TestAttempt::create([
                 'user_id' => auth()->user()->id,
+                'course_id' => $course->id,
                 'test_attempt_number' => TestAttempt::where('user_id', auth()->user()->id)->count() + 1,
                 'score' => $score,
                 ]);

@@ -172,4 +172,21 @@ class UserController extends Controller
         $testScores = $user->testAttemtps->pluck('score', 'id');
         return view('users.courseHistory', ['user' => $user, 'testScores' => $testScores, 'enrolledCourses' => $enrolledCourses]);
     }
+
+    public function showTests(User $user){
+        $professor = auth()->user();
+
+        $createdCourses = $professor->courses;
+
+        $courseAverages = [];
+
+        // dd($createdCourses);
+        foreach ($createdCourses as $course){
+            $testAttempts = $course->testAttempts;
+            $averageScore = $testAttempts->avg('score');
+            $courseAverages[$course->id] = $averageScore;
+        }
+
+        return view('users.testHistory',['courseAverages' => $courseAverages]);
+    }
 }

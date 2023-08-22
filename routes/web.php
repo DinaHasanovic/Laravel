@@ -111,6 +111,7 @@ Route::post('courses/{course}/submit-test', [QuestionsController::class,'submitT
 //Show Course and Test History
 Route::get('users/{user}/history', [UserController::class, 'enrolledCoursesHistory']);
 
+Route::get('users/{user}/test-results', [UserController::class, 'showTests']);
 
 
 //Email Verification

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('test_attempts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('course_id');
             $table->integer('test_attempt_number');
             $table->decimal('score', 5,2)->default(0);
             $table->timestamps();

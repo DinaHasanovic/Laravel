@@ -45,4 +45,9 @@ class Courses extends Model
     public function questions(){
         return $this->hasMany(TestQuestions::class,'course_id');
     }
+
+    public function testAttempts()
+{
+    return $this->hasMany(TestAttempt::class, 'course_id');
+}
 }
