@@ -15,12 +15,12 @@
             <li><a href="/courses">Courses</a></li>
             @auth
             <li><span class="user">
-                @if (auth()->user()->picture)
+                @if (auth()->user()->picture != "null")
                 <img src="{{ asset('storage/' . auth()->user()->picture) }}" alt="{{ auth()->user()->name }}" style="width:20px;height:20px;border-radius:8px; margin-right:5px">
                 @else
-                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user" style="margin-right:5px"></i>
                 @endif
-                {{auth()->user()->name}}</span></li>
+                 {{auth()->user()->name}}</span></li>
             @if(auth()->user()->role == 'professor')
             <li><a href="/courses/manage"><i class="fa-solid fa-gear"></i> Manage Courses</a></li>
             @endif

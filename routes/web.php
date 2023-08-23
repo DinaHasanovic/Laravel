@@ -91,6 +91,13 @@ Route::get('users/{user}/resetPassword', [UserController::class,'reset'])->middl
 //Reset Password
 Route::post('users/{user}',[UserController::class,'resetPassword']);
 
+//Promote to Professor
+Route::post('/users/{user}/promote', [UserController::class, 'promote'])->middleware(['auth',CheckAdmin::class]);
+
+//Demote to Student
+Route::post('/users/{user}/demote', [UserController::class, 'demote'])->middleware(['auth',CheckAdmin::class]);
+
+
 
 
 

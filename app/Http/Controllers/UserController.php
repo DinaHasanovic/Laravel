@@ -41,7 +41,7 @@ class UserController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
 
         //Role
-        $formFields['role'] = 'admin';
+        $formFields['role'] = 'student';
         $formFields['picture'] = $request->file('picture')->store('profile_pictures','public');
 
         //Create User
@@ -95,7 +95,7 @@ class UserController extends Controller
     public function destroy(User $user){
 
         $user->delete();
-        return redirect('/')->with('message', "User Deleted Successfully!");
+        return back()->with('message', "User Deleted Successfully!");
     }
 
 
@@ -209,5 +209,29 @@ class UserController extends Controller
         }
 
         return view('users.testHistory',['courseAverages' => $courseAverages]);
+    }
+
+
+    //Promote Student to a Professor role
+    public function promote(User $user){
+
+        if($user->role === 'student'){
+            $user->update(['role' => 'professor']);
+            return back()->with('message', 'User promoted to a professor');
+        }
+
+        return back()->with('message', 'User promotion failed');
+    }
+
+
+     //Demote Student to a Professor role
+     public function demote(User $user){
+
+        if($user->role === 'professor'){
+            $user->update(['role' => 'student']);
+            return back()->with('message', 'User demoted to a student');
+        }
+
+        return back()->with('message', 'User demotion failed');
     }
 }

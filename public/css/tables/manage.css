@@ -73,6 +73,11 @@ td.actions, th.actions {
     transition: background-color 0.3s;
 }
 
+.edit-button{
+    margin-right: 5px;
+}
+
+
 .delete-button {
     background-color: #dc3545;
 }
