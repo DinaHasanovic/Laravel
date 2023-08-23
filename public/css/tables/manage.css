@@ -41,6 +41,7 @@ td.actions, th.actions {
     border-left: none;
 }
 
+
 .courses_rows, .users_rows{
     border-bottom: 15px solid transparent;
 }
@@ -59,7 +60,7 @@ td.actions, th.actions {
 }
 
 
-.edit-button,.delete-button {
+.edit-button,.delete-button,.options-button {
     padding: 5px 10px;
     background-color: #007bff;
     color: white;
@@ -71,6 +72,15 @@ td.actions, th.actions {
 
 .delete-button {
     background-color: #dc3545;
+}
+
+.options-button{
+    background-color: #ff9f00;
+}
+
+.options-button:hover{
+    background-color: #e68a00;
+    color: black;
 }
 
 .edit-button:hover {

@@ -1,27 +1,41 @@
 <x-layout>
-    <h1>User History</h1>
-    
-    <h2>Enrolled Courses History</h2>
-    @foreach ($user->enrolledCourses as $course)
-        <div class="course-history">
-            <h3>Course: {{ $course->title }}</h3>
-            <p>Enrolled on: {{ $course->created_at->format('Y-m-d') }}</p>
-        </div>
-    @endforeach
-    
-    <h2>Test Attempts History</h2>
-    @foreach ($testScores as $testAttemptId => $score)
-        @php
-            $testAttempt = \App\Models\TestAttempt::find($testAttemptId);
-            $course = $testAttempt->course; // Assuming you have defined the relationship in the TestAttempt model
-        @endphp
-        
-        @if ($course) <!-- Only show if the course exists -->
-            <div class="test-attempt-history">
-                <h3>Test Attempt {{ $testAttemptId }}</h3>
-                <p>Course: {{ $course->title }}</p>
-                <p>Score: {{ $score }}</p>
-            </div>
-        @endif
-    @endforeach
+    <link rel="stylesheet" href="{{ asset('css/tables/courseHistory.css') }}">
+    <div class="courseHistory_table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Enrolled Courses History</th>
+                    <th>Test Attempts History</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($user->enrolledCourses as $course)
+                    @php
+                        $testAttemptsForCourse = $user->testAttemtps->where('course_id', $course->id);
+                    @endphp
+
+                    <tr>
+                        <td>
+                            <div class="course-history-item">
+                                <h3>Course: {{ $course->title }}</h3>
+                                <p>Enrolled on: {{ $course->created_at->format('Y-m-d') }}</p>
+                            </div>
+                        </td>
+                        <td class="test_results">
+                            @foreach ($testAttemptsForCourse as $testAttempt)
+                                @php
+                                    $score = $testScores[$testAttempt->id] ?? 'N/A';
+                                @endphp
+
+                                <div class="test-attempt-item">
+                                    <h3>Test Attempt {{ $testAttempt->id }}</h3>
+                                    <p>Score: {{ $score }}%</p>
+                                </div>
+                            @endforeach
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </x-layout>

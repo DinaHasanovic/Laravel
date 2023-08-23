@@ -1,4 +1,5 @@
 <x-layout>
+    @include('partials._search')
 <link rel="stylesheet" href="{{ asset('css/courses.css') }}">
 <div class="courses_Body">
     <div class="courses_Grid">

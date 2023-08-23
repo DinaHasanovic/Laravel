@@ -21,6 +21,9 @@
             @if (auth()->user()->role == 'admin')
             <li><a href="/users/manage"><i class="fa-solid fa-gear"></i> Manage Users</a></li>
             @endif
+            @if (auth()->user()->role == 'student')
+            <li><a href="/users/{{auth()->user()->id}}/history"><i class="fa-solid fa-gear"></i> History</a></li>
+            @endif
             <li>
                 <form action="/logout">
                     @csrf

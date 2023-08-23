@@ -109,11 +109,12 @@ Route::get('courses/{course}/take-test', [QuestionsController::class, 'takeTest'
 //Show Test Results
 Route::post('courses/{course}/submit-test', [QuestionsController::class,'submitTest']);
 
+//Show Test Results
+Route::get('courses/{user}/test-results', [UserController::class, 'showTests'])->middleware(['auth',CheckProfessor::class]);
+
+
 //Show Course and Test History
 Route::get('users/{user}/history', [UserController::class, 'enrolledCoursesHistory'])->middleware(['auth',CheckStudent::class]);
-
-//Show Test Results
-Route::get('users/{user}/test-results', [UserController::class, 'showTests'])->middleware(['auth',CheckProfessor::class]);
 
 
 

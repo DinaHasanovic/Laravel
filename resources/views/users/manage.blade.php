@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/manage.css') }}">
+<link rel="stylesheet" href="{{ asset('css/tables/manage.css') }}">
 <x-layout>
     <h1 class="heading">User Management</h1>
     @unless ($users->isEmpty())

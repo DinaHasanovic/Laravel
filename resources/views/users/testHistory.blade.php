@@ -1,17 +1,28 @@
 <x-layout>
+    <link rel="stylesheet" href="{{ asset('css/tables/testHistory.css') }}">
     <h1>Professor Dashboard</h1>
-    
-    <h2>Average Test Scores</h2>
-    @foreach ($courseAverages as $courseId => $averageScore)
-        @php
-            $course = \App\Models\Courses::find($courseId);
-        @endphp
+    <div class="course-average-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Average Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($courseAverages as $courseId => $averageScore)
+                    @php
+                        $course = \App\Models\Courses::find($courseId);
+                    @endphp
 
-        @if ($course)
-            <div class="course-average">
-                <h3>Course: {{ $course->title }}</h3>
-                <p>Average Score: {{ $averageScore ?? 'N/A' }}</p>
-            </div>
-        @endif
-    @endforeach
+                    @if ($course)
+                        <tr class="test_results_rows">
+                            <td>{{ $course->title }}</td>
+                            <td>{{ $averageScore ?? 'N/A' }}</td>
+                        </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </x-layout>

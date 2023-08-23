@@ -18,7 +18,7 @@
 <body class="body">  
     @include('partials._navbar')
     <div class="main-content">
-        @include('partials._search')
+        {{-- @include('partials._search') --}}
         <x-flash-message/> {{--flash Message(popup when course is created) --}}
         {{$slot}}
     </div>
