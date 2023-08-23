@@ -27,6 +27,13 @@ class UserController extends Controller
             'name' => ['required','min:3'],
             'email' => ['required', 'email', Rule::unique('users','email')],
             'password' => ['required', 'confirmed', 'min:6'],
+            'gender' => ['required'],
+            'place_of_birth' => ['required'],
+            'country' => ['required'],
+            'birth_date' => ['required'],
+            'personal_number' => ['required'],
+            'phone_number' => ['required'],
+            'picture' => ['required'],
             
         ]);
 
@@ -35,6 +42,7 @@ class UserController extends Controller
 
         //Role
         $formFields['role'] = 'admin';
+        $formFields['picture'] = $request->file('picture')->store('profile_pictures','public');
 
         //Create User
         $user = User::create($formFields);

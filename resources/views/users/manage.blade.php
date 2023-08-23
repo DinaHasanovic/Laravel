@@ -13,7 +13,7 @@
             <tbody>
                 @foreach ($users as $user)
                 <tr class="users_rows">
-                    <td class="user-name">{{ $user->name }}</td>
+                    <td class="user-name"><img style="width:30px; height:30px; border-radius:8px; margin-right:10px" src="{{ asset('storage/' . $user->picture) }}" alt="{{ $user->name }}">  {{ $user->name }}</td>
                     <td class="actions">
                         <button class="edit-button"><a href="/users/{{ $user->id }}/edit"><i class="fa-solid fa-pencil"></i> Edit</a></button>
                         <form style="display: inline;" method="POST" action="/users/{{ $user->id }}">

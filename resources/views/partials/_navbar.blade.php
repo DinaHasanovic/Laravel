@@ -14,7 +14,13 @@
             <li><a href="/">Home</a></li>
             <li><a href="/courses">Courses</a></li>
             @auth
-            <li><span class="user"> <i class="fa-solid fa-user"></i> {{auth()->user()->name}}</span></li>
+            <li><span class="user">
+                @if (auth()->user()->picture)
+                <img src="{{ asset('storage/' . auth()->user()->picture) }}" alt="{{ auth()->user()->name }}" style="width:20px;height:20px;border-radius:8px; margin-right:5px">
+                @else
+                    <i class="fa-solid fa-user"></i>
+                @endif
+                {{auth()->user()->name}}</span></li>
             @if(auth()->user()->role == 'professor')
             <li><a href="/courses/manage"><i class="fa-solid fa-gear"></i> Manage Courses</a></li>
             @endif

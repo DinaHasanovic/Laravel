@@ -41,6 +41,9 @@ td.actions, th.actions {
     border-left: none;
 }
 
+.user-name{
+    display: flex;
+}
 
 .courses_rows, .users_rows{
     border-bottom: 15px solid transparent;
