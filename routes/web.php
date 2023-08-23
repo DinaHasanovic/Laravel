@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckProfessor;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\NewsFeedController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\TestAttemptController;
 use App\Http\Controllers\CourseMaterialController;
@@ -27,6 +28,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 //Home Page
 Route::get('/', [CourseController::class, 'home']);
 
+//Contact Page
+Route::get('/contact', [CourseController::class,'contact']);
 
 //Courses
 
@@ -90,6 +93,12 @@ Route::post('users/{user}',[UserController::class,'resetPassword']);
 
 
 
+
+//Add NewsFeed
+Route::post('/add-news-feed' , [NewsFeedController::class, 'create'])->middleware(['auth',CheckAdmin::class]);
+
+//Delete NewsFeed
+Route::delete('delete-news-feed/{feed}', [NewsFeedController::class , 'destroy'])->middleware(['auth',CheckAdmin::class]);
 
 //Enroll into course
 Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent'])->middleware(['auth',CheckStudent::class]);

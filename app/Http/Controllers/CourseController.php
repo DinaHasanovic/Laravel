@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Courses;
 use App\Models\User;
+use App\Models\Courses;
+use App\Models\NewsFeed;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -15,12 +16,18 @@ class CourseController extends Controller
         return view('home');
     }
 
+    //Contact Page
+    public function contact(){
+        return view('contact');
+    }
+
 
     //Get All Courses
     public function index(){
         return view('courses.index', [
             'courses' => Courses::latest()->filter(request(['tag', 'search']))
-            ->paginate(2)
+            ->paginate(2),
+            'newsFeed' => NewsFeed::latest()->get()
         ]);
     }
     
@@ -49,8 +56,16 @@ class CourseController extends Controller
         ]);
 
          $formFields['user_id'] = auth()->id();
+         $courseTitle = $formFields['title'];
 
         Courses::create($formFields);
+
+        NewsFeed::create([
+            'content' => auth()->user()->name . " created a new Course named $courseTitle",
+        ]);
+
+
+
 
 
         return redirect('/')-> with('message','Course Created Successfuly!');
@@ -81,6 +96,11 @@ class CourseController extends Controller
 
         $course->update($formFields);
 
+        $courseTitle = $formFields['title'];
+        NewsFeed::create([
+            'content' => auth()->user()->name . " updated a Course named $courseTitle",
+        ]);
+
 
         return back()->with('message','Course Updated Successfuly!');
     }
@@ -92,6 +112,12 @@ class CourseController extends Controller
         if($course->user_id != auth()->id()){
             abort(403,'Unauthorized Action');
         }
+
+        $courseTitle = $course->title;
+        NewsFeed::create([
+            'content' => auth()->user()->name . " Removed a Course named $courseTitle",
+        ]);
+
         $course->delete();
         return redirect('/')->with('message', "Course Deleted Successfully!");
     }

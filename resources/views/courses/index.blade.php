@@ -15,6 +15,11 @@
         </div>
         @endunless
     </div>
+    <div class="newsFeed">
+        @foreach ($newsFeed as $item)
+        <x-newsFeed  :item="$item"/>
+        @endforeach
+    </div>
 </div>
 <div class="p-6">
     {{$courses->links()}}
