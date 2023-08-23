@@ -15,7 +15,7 @@ class CheckStudent
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->role === 'student'){
+        if(auth()->user()->role === 'student' || auth()->user()->role === 'admin'){
             return $next($request);
         }
 

@@ -37,3 +37,18 @@
     line-height: 1.2;
     text-align: center;
   }
+
+
+  .contact-button {
+    text-decoration: none;
+    background-color: #eb5e28;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #d3451a;
+}

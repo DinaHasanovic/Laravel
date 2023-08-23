@@ -65,9 +65,6 @@ class CourseController extends Controller
         ]);
 
 
-
-
-
         return redirect('/')-> with('message','Course Created Successfuly!');
     }
 

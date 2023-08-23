@@ -97,6 +97,9 @@ Route::post('/users/{user}/promote', [UserController::class, 'promote'])->middle
 //Demote to Student
 Route::post('/users/{user}/demote', [UserController::class, 'demote'])->middleware(['auth',CheckAdmin::class]);
 
+//Apply for Proffesor
+Route::post('/apply-for-professor', [NewsFeedController::class, 'applyForProfessor'])->middleware('auth');
+
 
 
 
@@ -106,6 +109,9 @@ Route::post('/add-news-feed' , [NewsFeedController::class, 'create'])->middlewar
 
 //Delete NewsFeed
 Route::delete('delete-news-feed/{feed}', [NewsFeedController::class , 'destroy'])->middleware(['auth',CheckAdmin::class]);
+
+//Send Message
+Route::post('/send-message', [NewsFeedController::class, 'sendMessage']);
 
 //Enroll into course
 Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent'])->middleware(['auth',CheckStudent::class]);
@@ -166,5 +172,3 @@ Route::get('/email/resend', [UserController::class, 'resend'])->middleware(['aut
 //Show Resend Verification Email Form
 Route::get('/resend-verification', [UserController::class, 'showResendVerificationForm'])
     ->name('resend-verification');
-
-

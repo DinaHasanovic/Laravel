@@ -15,7 +15,7 @@ class CheckProfessor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->role === 'professor'){
+        if(auth()->user()->role === 'professor' || auth()->user()->role === 'admin'){
             return $next($request);
         }
 

@@ -1,8 +1,16 @@
 .form_body{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     min-height: 50vh;
     margin: 5%;
+}
+
+.form_body div:nth-child(2){
+    height: 40vh;
+}
+
+.form_body div:nth-child(3){
+    height: 50vh;
 }
 
 
@@ -46,7 +54,13 @@
     margin-bottom: 3%;
 }
 
-.form_container input,textarea{
+.form_container input{
+    border-radius: 8px;
+    color: white;
+}
+
+.form_container textarea{
+    color: black;
     border-radius: 8px;
 }
 
@@ -80,6 +94,11 @@
 .form_container a:hover{
     text-decoration: underline;
     color: #c75223;
+}
+
+
+.file_input{
+    margin-bottom: 10px;
 }
 
 
