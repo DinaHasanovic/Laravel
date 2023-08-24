@@ -5,7 +5,7 @@
         <div>
             <h2>Create New Course</h2>
         </div>
-        <form method="POST" action="/courses">
+        <form method="POST" action="/courses" enctype="multipart/form-data">
             @csrf
             <label for="title">Name:</label>
             <input type="text" id="title" name="title" value="{{old('title')}}">
@@ -46,6 +46,15 @@
         
             @error('price')
             <p>{{$message}}</p>
+            @enderror
+            <br>
+
+
+            <label for="image">Course Image:</label>
+            <input style="color: white" type="file" name="image" >
+
+            @error('image')
+            <p class="errorMessage">{{$message}}</p>
             @enderror
             <br>
         

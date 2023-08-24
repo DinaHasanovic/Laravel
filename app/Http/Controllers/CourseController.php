@@ -50,12 +50,13 @@ class CourseController extends Controller
         $formFields = $request-> validate([
             'title' => ['required', Rule::unique('courses','title')],
             'description' => 'required',
-            'duration' => 'required',
-            'tags' => 'required',
-            'price' => 'required',
+            'duration' => ['required','integer','min:1'],
+            'tags' => ['required','array','min:1'],
+            'price' => ['required','numveric','min:0']
         ]);
 
          $formFields['user_id'] = auth()->id();
+         $formFields['image'] = $request->file('image')->store('course_images','public');
          $courseTitle = $formFields['title'];
 
         Courses::create($formFields);
@@ -86,9 +87,9 @@ class CourseController extends Controller
         $formFields = $request-> validate([
             'title' => ['required'],
             'description' => 'required',
-            'duration' => 'required',
-            'tags' => 'required',
-            'price' => 'required',
+            'duration' => ['required','integer','min:1'],
+            'tags' => ['required','array','min:1'],
+            'price' => ['required','numveric','min:0']
         ]);
 
         $course->update($formFields);

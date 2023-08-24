@@ -11,7 +11,7 @@ class Courses extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','tags','description','price','duration','user_id'];
+    protected $fillable = ['title','tags','description','price','duration','user_id','image'];
 
 
     //Filter for search (name,tags,description)

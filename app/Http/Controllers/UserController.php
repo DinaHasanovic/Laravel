@@ -24,16 +24,16 @@ class UserController extends Controller
     //Create New User
     public function store(Request $request){
         $formFields = $request->validate([
-            'name' => ['required','min:3'],
-            'email' => ['required', 'email', Rule::unique('users','email')],
-            'password' => ['required', 'confirmed', 'min:6'],
-            'gender' => ['required'],
-            'place_of_birth' => ['required'],
-            'country' => ['required'],
-            'birth_date' => ['required'],
-            'personal_number' => ['required'],
-            'phone_number' => ['required'],
-            'picture' => ['required'],
+            'name' => ['required','min:3', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users','email')],
+            'password' => ['required', 'confirmed', 'min:6', 'max:255'],
+            'gender' => ['required', "in:male,female,other"],
+            'place_of_birth' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+            'birth_date' => ['required', 'date', 'before:' . now()->subYears(16)->format('Y-m-d')],
+            'personal_number' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
+            'picture' => ['required', 'image', 'mimes:jpeg,png,jpg'],
             
         ]);
 

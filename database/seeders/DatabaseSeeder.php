@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Courses;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'birth_date' =>  $userBirthDate,
             'personal_number' => '123124124123',
             'phone_number' => '063-1662944',
-            'picture' => "null",
+            'picture' => asset('storage/profile_pictures/N0126ejhjrxZmhZCdMYnxVYmlEplFMgLh0ZpD0SE.jpg'),
         ]);
 
         $user = User::factory()->create([
@@ -42,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'birth_date' =>  $userBirthDate,
             'personal_number' => '123124124123',
             'phone_number' => '063-1662944',
-            'picture' => "null",
+            'picture' => asset('storage/profile_pictures/N0126ejhjrxZmhZCdMYnxVYmlEplFMgLh0ZpD0SE.jpg'),
         ]);
 
         $user = User::factory()->create([
@@ -55,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'birth_date' =>   $userBirthDate,
             'personal_number' => '123124124123',
             'phone_number' => '063-1662944',
-            'picture' => "null",
+            'picture' => asset('storage/profile_pictures/N0126ejhjrxZmhZCdMYnxVYmlEplFMgLh0ZpD0SE.jpg'),
         ]);
 
         // Courses::factory(6)->create([
@@ -73,6 +74,7 @@ class DatabaseSeeder extends Seeder
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             'duration' => 4,
             'price' => 199,
+            'image' => 'image'
         ]);
 
         Courses::create([
@@ -86,6 +88,7 @@ class DatabaseSeeder extends Seeder
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             'duration' => 2,
             'price' => 300,
+            'image' => 'image'
         ]);
 
        

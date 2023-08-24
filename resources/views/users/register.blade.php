@@ -84,7 +84,7 @@
                 <br>
 
                 <label for="picture">Picture:</label>
-                <input type="file" id="picture" name="picture">
+                <input style="color: white" type="file" id="picture" name="picture">
                 @error('picture')
                 <p style="color: red">{{$message}}</p>
                 @enderror

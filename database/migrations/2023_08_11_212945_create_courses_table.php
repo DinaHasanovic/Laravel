@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('description');
             $table->decimal('duration');
             $table->float('price');
+            $table->string('image');
             $table->timestamps();
         });
     }

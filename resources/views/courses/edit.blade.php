@@ -71,7 +71,7 @@
             <br>
 
             <label for="file">Upload Material:</label>
-            <input type="file" name="file" >
+            <input style="color: white" type="file" name="file" >
 
             @error('file')
             <p class="errorMessage">{{$message}}</p>

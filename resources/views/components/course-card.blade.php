@@ -6,7 +6,9 @@
 
 <link rel="stylesheet" href="{{ asset('css/course-card.css') }}">
 <div class="courses_Item">
-    <div class="courses_Image"></div>
+    <div class="courses_Image">
+        <img src="{{ asset('storage/' . $course->image) }}" alt="Biology Course Image" style="color: white; text-align:center">
+    </div>
     <div class="courses_Content">
         <a href="courses/{{$course['id']}}" class="courses_Title">{{$course->title}}</a>
         <div class="course_tags">
