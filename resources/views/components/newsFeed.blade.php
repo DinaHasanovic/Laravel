@@ -3,6 +3,7 @@
             <p>{{ $item->content }}</p>
             <p style="display: none">{{ $item->created_at}}</p>
             <p class="time-passed"></p>
+            @auth
             @if (auth()->user()->role === 'admin') <!-- Show delete button for admin -->
                 <form action="/delete-news-feed/{{$item->id}}" method="POST">
                     @csrf
@@ -10,6 +11,7 @@
                     <button class="delete_newsFeed" type="submit"><i class="fa-solid fa-trash"></i> Delete</button>
                 </form>
             @endif
+        @endauth
         </div>
         
         <script>

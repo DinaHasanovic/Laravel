@@ -7,14 +7,18 @@
         @foreach ($newsFeed as $item)
         <x-newsFeed  :item="$item"/>
         @endforeach
-        <div class="add-news-feed-form">
-            <form action="/add-news-feed" method="POST">
-                @csrf
-                <label for="content">News Feed Content:</label>
-                <textarea name="content" rows="4" cols="50"></textarea>
-            <button type="submit"><i class="fa-solid fa-circle-plus"></i> Add News Feed</button>
-            </form>
-        </div>
+        @auth
+            @if (auth()->user()->role === 'admin')
+                <div class="add-news-feed-form">
+                    <form action="/add-news-feed" method="POST">
+                        @csrf
+                        <label for="content">News Feed Content:</label>
+                        <textarea name="content" rows="4" cols="50"></textarea>
+                        <button type="submit"><i class="fa-solid fa-circle-plus"></i> Add News Feed</button>
+                    </form>
+                </div>
+            @endif
+        @endauth
     </div>
     <div class="courses_Grid">
         @unless (count($courses) == 0)
@@ -40,9 +44,9 @@
 <div>
     @if (auth()->check())
         @if (auth()->user()->role === 'student')
-            <form action="/apply-for-professor" method="POST">
+            <form class="create_courseButton" action="/apply-for-professor" method="POST">
                 @csrf
-                <button type="submit">Apply for Professor</button>
+                <button> <i class="fas fa-user-graduate"></i> Apply for Professor</button>
             </form>
         @elseif (auth()->user()->role === 'professor' || auth()->user()->role === 'admin')
             <div class="create_courseButton">
