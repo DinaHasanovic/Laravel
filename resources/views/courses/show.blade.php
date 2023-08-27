@@ -16,6 +16,7 @@
                 <p><strong>Materials:</strong><span> Video Lectures, PDFs</span></p>
             </div>
             <div class="course_buttons">
+                @auth
                 @if (auth()->user()-> role === 'student')
                     @if ($course->enrolledStudents()->where('user_id', auth()->user()->id)->exists())
                         <a href="/courses/{{$course->id}}/take-test" class="course_button_test">
@@ -39,6 +40,7 @@
                         View Material
                     </a>
                 @endif
+                @endauth
             </div>
         </div>
     </div>
