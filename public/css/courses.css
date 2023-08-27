@@ -108,15 +108,13 @@
     width: 100%;
     height: 250px;
     display: block;
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
     overflow: hidden;
     position: relative;
     aspect-ratio: 1 / 1;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 40px;
+    border-radius: 8px;
   }
 
   .courses_Content {

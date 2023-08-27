@@ -50,9 +50,9 @@ class CourseController extends Controller
         $formFields = $request-> validate([
             'title' => ['required', Rule::unique('courses','title')],
             'description' => 'required',
-            'duration' => ['required','integer','min:1'],
-            'tags' => ['required','array','min:1'],
-            'price' => ['required','numveric','min:0']
+            'duration' => ['required','min:1'],
+            'tags' => ['required','min:1'],
+            'price' => ['required','min:0']
         ]);
 
          $formFields['user_id'] = auth()->id();
@@ -87,12 +87,17 @@ class CourseController extends Controller
         $formFields = $request-> validate([
             'title' => ['required'],
             'description' => 'required',
-            'duration' => ['required','integer','min:1'],
-            'tags' => ['required','array','min:1'],
-            'price' => ['required','numveric','min:0']
+            'duration' => ['required','min:1'],
+            'tags' => ['required','min:1'],
+            'price' => ['required','min:0']
         ]);
 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('course_images', 'public');
+            $formFields['image'] = $imagePath;
+        }
         $course->update($formFields);
+        
 
         $courseTitle = $formFields['title'];
         NewsFeed::create([

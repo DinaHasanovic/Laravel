@@ -3,7 +3,7 @@
 <div class="course_Body">
     <div class="course_Container">
         <div class="course_Image">
-
+            <img src="{{ asset('storage/' . $course->image) }}" alt="Biology Course Image" style="color: white; text-align:center; border-radius:8px">
         </div>
         <div class="course_Info">
             <h2 class="course_Title">{{$course['title']}}</h2>

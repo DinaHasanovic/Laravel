@@ -21,13 +21,22 @@
                 <form action="/courses/{{$course->id}}/submit-test" method="POST">
                     @csrf
                     <input type="hidden" name="difficulty" value="{{ request('difficulty') }}">
+                    @php
+                        $questionCount = 0;
+                    @endphp
                     @foreach ($questions as $question)
+                    @if ($questionCount >=10)
+                        @break
+                    @endif
                         <div class="question">
                             <h3>{{$question->question_text}}</h3>
                             <input type="text" name="answers[{{$question->id}}]" >
                             <input type="hidden" name="shown_questions[]" value="{{$question->id}}">
                             <button type="submit" name="help_question" value='{{$question->id}}' formnovalidate>Request help</button>
                         </div>
+                        @php
+                            $questionCount ++;
+                        @endphp
                     @endforeach
                     <div class="testForm_submitButton">
                         @if (count($questions) > 0)

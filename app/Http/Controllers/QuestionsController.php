@@ -102,16 +102,18 @@ class QuestionsController extends Controller
                 ->whereNotIn('id', $questions) // Exclude already shown questions
                 ->inRandomOrder() // Get a random question
                 ->first();
+
             
             if ($newQuestion) {
                 // Update the shown questions array to include the new question's ID
-                $questions[] = $newQuestion->id;
+                $questionsarray[] = $newQuestion->id;
                 // Remove the previous question's ID from the array
-                $questions = array_diff($questions, [$help_question]);
+                $questions = array_diff($questionsarray, [$help_question]);
+         
                 // Store the new question's ID in the session
                 session(['new_question' => $newQuestion->id]);
                 // Redirect back with a success message
-                return back()->with('success', 'Question replaced.');
+                return back()->with('message', 'Question replaced.');
             } else {
                 // If no more questions are available
                 return back()->with('message', 'No more questions available.');

@@ -5,7 +5,7 @@
         <div>
             <h2>Edit Course</h2>
         </div>
-        <form method="POST" action="/courses/{{$course->id}}">
+        <form method="POST" action="/courses/{{$course->id}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <label for="title">Title:</label>
@@ -46,6 +46,14 @@
             <input type="number" id="price" name="price" min="0" step="0.01" value="{{$course->price}}">
         
             @error('price')
+            <p class="errorMessage">{{$message}}</p>
+            @enderror
+            <br>
+
+            <label for="image">Course Image:</label>
+            <input style="color: white" type="file" name="image" value="{{$course->image}}" >
+
+            @error('image')
             <p class="errorMessage">{{$message}}</p>
             @enderror
             <br>

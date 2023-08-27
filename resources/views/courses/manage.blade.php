@@ -34,7 +34,7 @@
                         <form style="display: inline;" method="POST" action="/courses/{{$course->id}}">
                             @csrf
                             @method('DELETE')
-                            <button class="delete-button"><a href="/"><i class="fa-solid fa-trash"></i>Delete</a></button>
+                            <button class="delete-button"><i class="fa-solid fa-trash"></i>Delete</button>
                         </form>
                         <a class="options-button" href="{{auth()->user()->id}}/test-results"><i class="fa-solid fa-gear"></i> Options</a>
                     </td>
