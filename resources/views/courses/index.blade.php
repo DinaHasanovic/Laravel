@@ -48,7 +48,7 @@
                 @csrf
                 <button> <i class="fas fa-user-graduate"></i> Apply for Professor</button>
             </form>
-        @elseif (auth()->user()->role === 'professor' || auth()->user()->role === 'admin')
+        @elseif (auth()->user()->role === 'professor')
             <div class="create_courseButton">
                 <a href="/courses/create"><i class="fa-solid fa-circle-plus"></i> Create Course</a>
             </div>

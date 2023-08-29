@@ -34,11 +34,12 @@
                             </button>
                         </form>
                     @endif
-                @elseif(auth()->user()->role === 'professor' && auth()->user()->id === $course->user_id)
+                @elseif((auth()->user()->role === 'professor' && auth()->user()->id === $course->user_id) || auth()->user()->role === 'admin')
                     <a href="/courses/{{$course->id}}/material" class="course_button_material">
                         <i class="fas fa-book"></i>
                         View Material
                     </a>
+                
                 @endif
                 @endauth
             </div>
