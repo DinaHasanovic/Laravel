@@ -3,13 +3,10 @@
 use App\Http\Middleware\CheckAdmin;
 use App\Http\Middleware\CheckStudent;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckProfessor;
+use App\Http\Middleware\CheckModerator;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\NewsFeedController;
-use App\Http\Controllers\QuestionsController;
-use App\Http\Controllers\TestAttemptController;
-use App\Http\Controllers\CourseMaterialController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -26,44 +23,38 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 //Home Page
-Route::get('/', [CourseController::class, 'home']);
+Route::get('/', [PostController::class, 'home']);
 
 //Contact Page
-Route::get('/contact', [CourseController::class,'contact']);
+Route::get('/contact', [PostController::class,'contact']);
 
-//Courses
+// All Posts
+Route::get('/posts', [PostController::class, 'index'] );
 
-
-// All Courses
-Route::get('/courses', [CourseController::class, 'index'] );
-
-//Store Course Data
-Route::post('/courses', [CourseController::class, 'store'])->middleware(['auth',CheckProfessor::class]);
+//Store Post Data
+Route::post('/posts', [PostController::class, 'store'])->middleware(['auth',CheckModerator::class]);
 
 //Show Edit Form
-Route::get('/courses/{course}/edit',[CourseController::class, 'edit'])->middleware(['auth',CheckProfessor::class]);
+Route::get('/posts/{post}/edit',[PostController::class, 'edit'])->middleware(['auth',CheckModerator::class]);
 
-//Update Course
-Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware(['auth',CheckProfessor::class]);
+//Update Post
+Route::put('/posts/{post}', [PostController::class, 'update'])->middleware(['auth',CheckModerator::class]);
 
-//Delete Course
-Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware(['auth',CheckProfessor::class]);
+//Delete Post
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware(['auth',CheckModerator::class]);
 
-//Manage Courses
-Route::get('/courses/manage', [CourseController::class , 'manage'])->middleware(['auth', CheckProfessor::class]);
+//Manage Posts
+Route::get('/posts/manage', [PostController::class , 'manage'])->middleware(['auth', CheckModerator::class]);
 
 //Show Create Form
-Route::get('/courses/create', [CourseController::class, 'create'])->middleware(['auth',CheckProfessor::class]);
+Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth',CheckModerator::class]);
 
-//Single Course
-Route::get('/courses/{course}',[CourseController::class, 'show']);
-
-
+//Single Post
+// Route::get('/posts/{post}',[PostController::class, 'show']);
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 
 
 //Users
-
-
 //Manage Users
 Route::get('/users/manage', [UserController::class, 'manage'])->middleware(['auth',CheckAdmin::class]);
 
@@ -91,17 +82,14 @@ Route::get('users/{user}/resetPassword', [UserController::class,'reset'])->middl
 //Reset Password
 Route::post('users/{user}',[UserController::class,'resetPassword']);
 
-//Promote to Professor
+//Promote to Moderator
 Route::post('/users/{user}/promote', [UserController::class, 'promote'])->middleware(['auth',CheckAdmin::class]);
 
 //Demote to Student
 Route::post('/users/{user}/demote', [UserController::class, 'demote'])->middleware(['auth',CheckAdmin::class]);
 
-//Apply for Proffesor
-Route::post('/apply-for-professor', [NewsFeedController::class, 'applyForProfessor'])->middleware('auth');
-
-
-
+//Apply for Moderator
+Route::post('/apply-for-moderator', [NewsFeedController::class, 'applyForModerator'])->middleware('auth');
 
 
 //Add NewsFeed
@@ -113,39 +101,8 @@ Route::delete('delete-news-feed/{feed}', [NewsFeedController::class , 'destroy']
 //Send Message
 Route::post('/send-message', [NewsFeedController::class, 'sendMessage']);
 
-//Enroll into course
-Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent'])->middleware(['auth',CheckStudent::class]);
-
-//Add Course Materials
-Route::post('courses/{course}/materials', [CourseMaterialController::class, 'uploadMaterial'])->middleware(['auth',CheckProfessor::class]);
-
-//Show Course Material
-Route::get('courses/{course}/material', [CourseMaterialController::class,'showMaterials'])->middleware('auth');
-
-//Add Course Test Questions
-Route::post('courses/{course}/questions', [QuestionsController::class,'setupQuestion'])->middleware(['auth',CheckProfessor::class]);
-
-//Show Test Questions
-Route::get('courses/{course}/take-test', [QuestionsController::class, 'takeTest']);
-
-//Show Test Results
-Route::post('courses/{course}/submit-test', [QuestionsController::class,'submitTest']);
-
-//Show Test Results
-Route::get('courses/{user}/test-results', [UserController::class, 'showTests'])->middleware(['auth',CheckProfessor::class]);
-
-
-//Show Course and Test History
-Route::get('users/{user}/history', [UserController::class, 'enrolledCoursesHistory'])->middleware(['auth',CheckStudent::class]);
-
-
-
-
-
-
-
-
-//Email Verification
+//Enroll into post
+// Route::post('courses/{course}/enroll',[UserController::class,'enrollStudent'])->middleware(['auth',CheckStudent::class]);
 
 
 //Send Email Verification
@@ -163,12 +120,22 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
-
 //Resend Verification Email
 Route::get('/email/resend', [UserController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
-
 
 
 //Show Resend Verification Email Form
 Route::get('/resend-verification', [UserController::class, 'showResendVerificationForm'])
     ->name('resend-verification');
+
+
+Route::post('/posts/{post}/comments', [PostController::class, 'storeComment'])->name('post.comments.store');
+
+
+Route::get('/reply/{postId}', [PostController::class, 'showReplyForm'])->name('reply.form');
+
+Route::post('/store-response', [PostController::class, 'storeresponses'])->name('responses.store');
+
+
+
+

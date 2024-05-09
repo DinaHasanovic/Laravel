@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #1c1b1a;
+    background-color: rgb(185, 176, 176);
     align-content: center;
     flex-wrap: nowrap;
   }
@@ -12,10 +12,9 @@
 
   .text {
     width: 100%;
-    height: auto; 
+    height: auto;
     font-weight: 400;
     font-style: normal;
-    font-family: "Archivo", "Archivo Placeholder", sans-serif;
     color: white;
     font-size: 16px;
     letter-spacing: 0em;
@@ -25,12 +24,11 @@
 
 
   .image {
-    width: auto; 
-    height: auto; 
+    width: auto;
+    height: auto;
     font-weight: 400;
     font-style: normal;
-    font-family: "Noto Emoji", "Noto Emoji Placeholder", sans-serif;
-    color: #eb5e28;
+    color: rgb(199, 68, 101);
     font-size: 80px;
     margin: 1%;
     letter-spacing: 0em;
@@ -41,7 +39,7 @@
 
   .contact-button {
     text-decoration: none;
-    background-color: #eb5e28;
+    background-color:rgb(199, 68, 101);
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -50,5 +48,5 @@
 }
 
 .contact-button:hover {
-    background-color: #d3451a;
+    background-color:rgb(199, 68, 101);
 }

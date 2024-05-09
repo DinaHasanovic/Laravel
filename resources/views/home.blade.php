@@ -12,14 +12,14 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="body">  
+<body class="body">
     @include('partials._navbar')
     <x-flash-message/> {{--flash Message(popup when course is created) --}}
     @include('partials._hero')
     @include('partials._whyUs')
     @include('partials._getStarted')
     @include('partials._faq')
-    
+
     <footer>
         @include('partials._footer')
     </footer>

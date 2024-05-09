@@ -4,15 +4,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Elsie&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
 <nav class="navbar">
     <div class="container">
-        <a href="/" class="logo">Online Courses</a>
+        <a href="/" class="logo">Local Foodies</a>
         <button class="menu-toggle">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <ul class="nav-links">                
+        <ul class="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="/courses">Courses</a></li>
+            <li><a href="/posts">Post</a></li>
             @auth
             <li><span class="user">
                 @if (auth()->user()->picture != "null")
@@ -21,15 +21,13 @@
                     <i class="fa-solid fa-user" style="margin-right:5px"></i>
                 @endif
                  {{auth()->user()->name}}</span></li>
-            @if(auth()->user()->role == 'professor')
-            <li><a href="/courses/manage"><i class="fa-solid fa-gear"></i> Manage Courses</a></li>
+            @if(auth()->user()->role == 'moderator')
+            <li><a href="/posts/manage"><i class="fa-solid fa-gear"></i> Manage Posts</a></li>
             @endif
             @if (auth()->user()->role == 'admin')
             <li><a href="/users/manage"><i class="fa-solid fa-gear"></i> Manage Users</a></li>
             @endif
-            @if (auth()->user()->role == 'student')
-            <li><a href="/users/{{auth()->user()->id}}/history"><i class="fa-solid fa-gear"></i> History</a></li>
-            @endif
+
             <li>
                 <form action="/logout">
                     @csrf
@@ -45,5 +43,5 @@
             @endauth
         </ul>
     </div>
-    
+
 </nav>

@@ -30,10 +30,10 @@ th {
     background-color: #1f1f1f;
 }
 
-td.course-name {
+td.post-name {
     text-align: left;
     border-right: none;
-    
+
 }
 
 td.actions, th.actions {
@@ -45,21 +45,21 @@ td.actions, th.actions {
     display: flex;
 }
 
-.courses_rows, .users_rows{
+.posts_rows, .users_rows{
     border-bottom: 15px solid transparent;
 }
 
-.courses_rows:last-child, .users_rows:last-child{
+.posts_rows:last-child, .users_rows:last-child{
     border-bottom: none;
 }
 
 
-.courses_rows:nth-child(even), .users_rows:nth-child(even){
-    background-color: #333; 
+.posts_rows:nth-child(even), .users_rows:nth-child(even){
+    background-color: #333;
 }
 
-.courses_rows:nth-child(odd), .users_rows:nth-child(odd){
-    background-color: #444; 
+.posts_rows:nth-child(odd), .users_rows:nth-child(odd){
+    background-color: #444;
 }
 
 

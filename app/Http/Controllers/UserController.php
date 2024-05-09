@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Courses;
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Notifications\VerifyEmail;
@@ -34,7 +34,7 @@ class UserController extends Controller
             'personal_number' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'max:255'],
             'picture' => ['required', 'image', 'mimes:jpeg,png,jpg'],
-            
+
         ]);
 
         //Hash Password
@@ -49,7 +49,7 @@ class UserController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        
+
         //Login
         auth()->login($user);
 
@@ -61,14 +61,7 @@ class UserController extends Controller
     //Send Verification Email
     public function sendEmailVerificationNotification(User $user)
     {
-        // $verificationUrl = URL::temporarySignedRoute(
-        //     'verification.verify',
-        //     now()->addMinutes(config('auth.verification.expire', 60)),
-        //     [
-        //         'id' => $user->getKey(),
-        //         'hash' => sha1($user->getEmailForVerification()),
-        //     ]
-        // );
+
 
         $user->notify(new VerifyEmail); // Send the verification notification
     }
@@ -118,7 +111,7 @@ class UserController extends Controller
             $request->session()->regenerate();
 
             return redirect('/')->with('message','You are now logged in!');
-       
+
     }
         return back()->withErrors(['email'=> 'Invalid Credentials'])->onlyInput('email');
 
@@ -165,69 +158,42 @@ class UserController extends Controller
     }
 
 
-    //Enroll Student into Course
-    public function enrollStudent(Courses $course){
-        if(!$course){
-            return back()->with('message',"Course not found");
-        }
+    //Enroll Student into Post
+    // public function enrollStudent(Posts $post){
+    //     if(!$post){
+    //         return back()->with('message',"Post not found");
+    //     }
 
-        $student = auth()->user();
+    //     $student = auth()->user();
 
-        if($course->enrolledStudents->contains($student)){
-            return back()->with('message','Already enrolled');
-        }
+    //     if($post->enrolledStudents->contains($student)){
+    //         return back()->with('message','Already enrolled');
+    //     }
 
-        $course->enrolledStudents()->attach($student);
-
-
-        return back()->with('message','Enrolled successfully');
-    }
-    
-
-    //Enrolled Coureses History
-    public function enrolledCoursesHistory(User $user){
-
-        $enrolledCourses = $user->courses;
-        $testScores = $user->testAttemtps->pluck('score', 'id');
-        return view('users.courseHistory', ['user' => $user, 'testScores' => $testScores, 'enrolledCourses' => $enrolledCourses]);
-    }
+    //     $post->enrolledStudents()->attach($student);
 
 
-    //Show Tests result of a specific course and calculate average score
-    public function showTests(User $user){
-        $professor = auth()->user();
-
-        $createdCourses = $professor->courses;
-
-        $courseAverages = [];
-
-        // dd($createdCourses);
-        foreach ($createdCourses as $course){
-            $testAttempts = $course->testAttempts;
-            $averageScore = $testAttempts->avg('score');
-            $courseAverages[$course->id] = $averageScore;
-        }
-
-        return view('users.testHistory',['courseAverages' => $courseAverages]);
-    }
+    //     return back()->with('message','Enrolled successfully');
+    // }
 
 
-    //Promote Student to a Professor role
+
+    //Promote Student to a Moderator role
     public function promote(User $user){
 
         if($user->role === 'student'){
-            $user->update(['role' => 'professor']);
-            return back()->with('message', 'User promoted to a professor');
+            $user->update(['role' => 'moderator']);
+            return back()->with('message', 'User promoted to a moderator');
         }
 
         return back()->with('message', 'User promotion failed');
     }
 
 
-     //Demote Student to a Professor role
+     //Demote Student to a Moderator role
      public function demote(User $user){
 
-        if($user->role === 'professor'){
+        if($user->role === 'moderator'){
             $user->update(['role' => 'student']);
             return back()->with('message', 'User demoted to a student');
         }

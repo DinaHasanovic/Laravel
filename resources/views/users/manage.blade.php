@@ -20,9 +20,9 @@
                         @if ($user->role === 'student')
                             <form style="display: inline;" method="POST" action="/users/{{ $user->id }}/promote">
                                 @csrf
-                                <button class="edit-button" ><i class="fa-solid fa-arrow-up"></i> Promote to Professor</button>
+                                <button class="edit-button" ><i class="fa-solid fa-arrow-up"></i> Promote to Moderator</button>
                             </form>
-                        @elseif ($user->role === 'professor')
+                        @elseif ($user->role === 'moderator')
                              <form  style="display: inline;" method="POST" action="/users/{{ $user->id }}/demote">
                                 @csrf
                                 <button class="edit-button" ><i class="fa-solid fa-arrow-down"></i> Demote to Student</button>

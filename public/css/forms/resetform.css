@@ -16,7 +16,7 @@
     background-color: #1f1f1f;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    
+
 }
 
 .form_container h2{
@@ -51,19 +51,19 @@
 
 .form_container button{
     border: none;
-    background-color: #eb5e28;
+    background-color:gray;
     border-radius: 10px;
 }
 
 .form_container button:hover{
-    background-color: #c75223;
+    background-color:rgb(205, 188, 188);
     color: white;
 }
 
 
 .form_container p{
     margin-top: 2%;
-    color: red;
+    color: pink;
 }
 
 
@@ -77,12 +77,12 @@
     .form_container{
         width:50%;
     }
-    
+
     .form_container h2{
         height: 5vh;
         font-size: 28px;
     }
-    
+
     .form_container div{
         height: 5vh;
         width: 100%;
@@ -90,7 +90,7 @@
         padding-top: 0px;
     }
 
-    
+
 }
 
 @media (width:1024px){

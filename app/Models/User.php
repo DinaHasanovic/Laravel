@@ -3,8 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Courses;
-use App\Models\TestAttempt;
+use App\Models\Posts;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -56,20 +55,18 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
-    //Relationship with courses(Professor, Which Professor created course)
-    public function courses(){
-        return $this->hasMany(Courses::class, 'user_id');
+    //Relationship with posts(Moderator, Which Moderator created post)
+    public function posts ()
+    {
+        return $this->hasMany(Posts::class, 'user_id');
     }
 
     //Relationship with courses(Student, Show which student enrolled in which course)
-    public function enrolledCourses(){
-        return $this->belongsToMany(Courses::class, 'course_user' , 'user_id' , 'course_id');
-    }
+    // Relationship with enrolled posts (Student, Shows which student is enrolled in which course)
+public function enrolledPosts()
+{
+    return $this->belongsToMany(Posts::class, 'course_user', 'user_id', 'course_id');
+}
 
-    //Relationship with testAttempts (Every student can take test)
-    public function testAttemtps(){
-
-        return $this->hasMany(TestAttempt::class, 'user_id');
-    }
 
 }

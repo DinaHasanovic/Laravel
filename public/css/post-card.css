@@ -1,0 +1,14 @@
+.post_tags{
+    color: white;
+    padding: 3%;
+    font-style: italic;
+}
+
+.post_tag{
+    transition: color 0.3s;
+}
+
+
+.post_tag:hover{
+    color: black;
+}

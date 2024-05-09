@@ -1,0 +1,33 @@
+.komentari {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 55px;
+}
+
+.card {
+    margin-top: 100px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    background-color: rgb(178, 76, 93);
+}
+
+.card-body {
+    background-color:rgb(199, 186, 186);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+.form-group label {
+    text-align: center;
+    font-size: 24px; /* Promenite ovu vrednost prema potrebi */
+}
+.btn-primary {
+    font-size: 24px;
+    color:black; /* Promenite ovu vrednost prema potrebi */
+}

@@ -1,22 +1,25 @@
 .WhyChooseUs_Body {
-    height: min-content;
+    height: 500px; /* Povećavamo visinu diva na 200px */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center; /* Centriramo sadržaj vertikalno */
+    align-items: center; /* Centriramo sadržaj horizontalno */
     padding: 10%;
-    background-color: #252422;
+    background-color:pink;
     overflow: hidden;
     position: relative;
     align-content: center;
     flex-wrap: nowrap;
     gap: 40;
     border-radius: 0px 0px 0px 0px;
-  }
+}
+
+
+
 
   .WhyChooseUs_content {
     width: 100%;
-    height: min-content; 
+    height: min-content;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -29,17 +32,17 @@
 
   .Why_Choose_Us {
     text-align: left;
-    height: auto; 
+    height: auto;
     font-weight: 400;
     font-style: normal;
     font-family: "Elsie", sans-serif;
-    color: #ffffff;
+    color: black;
     font-size: 48px;
   }
 
 
   .WhyChooseUs_Paragraphs {
-    height: min-content; 
+    height: min-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,7 +53,7 @@
   }
 
   .WhyChooseUs_Paragraph_1 {
-    height: auto; 
+    height: auto;
     font-weight: 400;
     font-style: normal;
     font-family: "Archivo", "Archivo Placeholder", sans-serif;
@@ -73,7 +76,7 @@
 
   .WhyChooseUs_Card {
     width: 50%;
-    height: min-content; 
+    height: min-content;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -83,7 +86,7 @@
   }
 
   .WhyChooseUs_CardNumber {
-    height: auto; 
+    height: auto;
     font-weight: 400;
     font-style: normal;
     font-family: "Elsie", sans-serif;
@@ -95,7 +98,7 @@
 
 
   .WhyChooseUs_CardText {
-    height: auto; 
+    height: auto;
     max-width: 400px;
     font-weight: 700;
     font-style: normal;
@@ -105,3 +108,18 @@
     letter-spacing: -0.025em;
     line-height: 1.5;
   }
+
+  .image-row {
+    display: flex; /* Postavljamo prikaz na fleksibilan */
+    justify-content: space-between; /* Postavljamo raspored elemenata unutar reda tako da budu ravnomerno raspoređeni */
+}
+
+.image-row img {
+    width: 24%; /* Postavljamo širinu slika na 23% kako bi bile iste veličine i ostavljamo 1% praznog prostora između slika */
+    margin-right: 3%; /* Dodajemo 1% margine s desne strane svake slike */
+}
+
+.image-row img:last-child {
+    margin-right: 0; /* Uklanjamo marginu s desne strane poslednje slike u redu */
+}
+

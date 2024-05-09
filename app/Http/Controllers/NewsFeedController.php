@@ -10,7 +10,7 @@ class NewsFeedController extends Controller
 
     //Create NewsFeed
     public function create(Request $request){
-        
+
 
         $formFields = $request->validate([
             'content' => 'required',
@@ -25,7 +25,7 @@ class NewsFeedController extends Controller
 
     //Delete NewsFeed
     public function destroy(NewsFeed $feed){
-        
+
         if(!$feed){
             return back()->with('message', 'News Feed not found');
         }
@@ -36,11 +36,11 @@ class NewsFeedController extends Controller
     }
 
 
-    //Send message to apply for the professor
-    public function applyForProfessor()
+    //Send message to apply for the moderator
+    public function applyForModerator()
     {
         if (auth()->user()->role === 'student') {
-            $content = auth()->user()->name . '  applied for the professor role.';
+            $content = auth()->user()->name . '  applied for the moderator role.';
             NewsFeed::create([
                 'content' => $content,
             ]);
@@ -48,7 +48,7 @@ class NewsFeedController extends Controller
             return back()->with('message', 'Your application has been submitted.');
         }
 
-        return back()->with('message', 'You are not eligible to apply for the professor role.');
+        return back()->with('message', 'You are not eligible to apply for the moderator role.');
     }
 
 
@@ -58,7 +58,7 @@ class NewsFeedController extends Controller
     // Create a new notification in the news feed
     $content = "New message from: " . $request->input('name') . " (" . $request->input('email') . ")\n";
     $content .= "Message: " . $request->input('message');
-    
+
     NewsFeed::create([
         'content' => $content,
     ]);

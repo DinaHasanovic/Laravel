@@ -6,7 +6,7 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Courses;
+use App\Models\Posts;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,41 +21,41 @@ class DatabaseSeeder extends Seeder
         $userBirthDate = Carbon::create(1990, 5, 15);
 
         $user = User::factory()->create([
-            'name' => 'Ertan Muslic Admin',
-            'email' => 'ertanmuslic@gmail.com',
+            'name' => 'Almedina Hasanovic Admin',
+            'email' => 'almedinahasanovic00@gmail.com',
             'role' => 'admin',
-            'gender' => 'male',
+            'gender' => 'female',
             'place_of_birth' => 'Novi Pazar',
             'country' => 'Serbia',
             'birth_date' =>  $userBirthDate,
             'personal_number' => '123124124123',
-            'phone_number' => '063-1662944',
+            'phone_number' => '0655327491',
             'picture' => asset('storage/profile_pictures/N0126ejhjrxZmhZCdMYnxVYmlEplFMgLh0ZpD0SE.jpg'),
         ]);
 
         $user = User::factory()->create([
-            'name' => 'Ertan Muslic Professor',
-            'email' => 'ertanmuslic@hotmail.com',
-            'role' => 'professor',
-            'gender' => 'male',
+            'name' => 'Almedina Hasanovic Moderator',
+            'email' => 'almedinahasanovic00@gmail.com',
+            'role' => 'moderator',
+            'gender' => 'female',
             'place_of_birth' => 'Novi Pazar',
             'country' => 'Serbia',
             'birth_date' =>  $userBirthDate,
             'personal_number' => '123124124123',
-            'phone_number' => '063-1662944',
+            'phone_number' => '0655327491',
             'picture' => asset('storage/profile_pictures/N0126ejhjrxZmhZCdMYnxVYmlEplFMgLh0ZpD0SE.jpg'),
         ]);
 
         $user = User::factory()->create([
-            'name' => 'Ertan Muslic Student',
-            'email' => 'ertanmuslic@323gmail.com',
+            'name' => 'Almedina Hasanovic Student',
+            'email' => 'almedinahasanovic00@gmail.com',
             'role' => 'student',
-            'gender' => 'male',
+            'gender' => 'female',
             'place_of_birth' => 'Novi Pazar',
             'country' => 'Serbia',
             'birth_date' =>   $userBirthDate,
             'personal_number' => '123124124123',
-            'phone_number' => '063-1662944',
+            'phone_number' => '0655327491',
             'picture' => asset('storage/profile_pictures/N0126ejhjrxZmhZCdMYnxVYmlEplFMgLh0ZpD0SE.jpg'),
         ]);
 
@@ -63,34 +63,34 @@ class DatabaseSeeder extends Seeder
         //     'user_id' => $user->id
         // ]);
 
-        Courses::create([
+        Posts::create([
             'title' => 'Laravel Senior Developer',
             'tags' => 'laravel,javascript',
             'user_id'=> $user->id,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             'duration' => 4,
             'price' => 199,
             'image' => 'image'
         ]);
 
-        Courses::create([
+        Posts::create([
             'title' => 'Full-Stack Engineer',
             'tags' => 'laravel,backend,api',
             'user_id'=> $user->id,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             'duration' => 2,
             'price' => 300,
             'image' => 'image'
         ]);
 
-       
+
     }
 }
