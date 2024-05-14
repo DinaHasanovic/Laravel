@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory()->create([
             'name' => 'Almedina Hasanovic Admin',
-            'email' => 'almedinahasanovic00@gmail.com',
+            'email' => 'almedinahasanovic001@gmail.com',
             'role' => 'admin',
             'gender' => 'female',
             'place_of_birth' => 'Novi Pazar',
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory()->create([
             'name' => 'Almedina Hasanovic Moderator',
-            'email' => 'almedinahasanovic00@gmail.com',
+            'email' => 'almedinahasanovic002@gmail.com',
             'role' => 'moderator',
             'gender' => 'female',
             'place_of_birth' => 'Novi Pazar',
