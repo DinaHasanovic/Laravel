@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
 
         Posts::create([
             'title' => 'Laravel Senior Developer',
-            'tags' => 'laravel,javascript',
+            //'tags' => 'laravel,javascript',
             'user_id'=> $user->id,
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
 
         Posts::create([
             'title' => 'Full-Stack Engineer',
-            'tags' => 'laravel,backend,api',
+            //'tags' => 'laravel,backend,api',
             'user_id'=> $user->id,
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

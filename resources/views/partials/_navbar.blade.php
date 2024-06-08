@@ -13,6 +13,7 @@
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/posts">Post</a></li>
+            <li><a href="/subscriptions">Subscriptions</a></li>
             @auth
             <li><span class="user">
                 @if (auth()->user()->picture != "null")

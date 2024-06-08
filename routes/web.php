@@ -41,7 +41,8 @@ Route::get('/posts/{post}/edit',[PostController::class, 'edit'])->middleware(['a
 Route::put('/posts/{post}', [PostController::class, 'update'])->middleware(['auth',CheckModerator::class]);
 
 //Delete Post
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware(['auth',CheckModerator::class]);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware(['auth', CheckModerator::class])->name('posts.destroy');
+
 
 //Manage Posts
 Route::get('/posts/manage', [PostController::class , 'manage'])->middleware(['auth', CheckModerator::class]);
@@ -85,12 +86,16 @@ Route::post('users/{user}',[UserController::class,'resetPassword']);
 //Promote to Moderator
 Route::post('/users/{user}/promote', [UserController::class, 'promote'])->middleware(['auth',CheckAdmin::class]);
 
-//Demote to Student
+//Demote to Korisnik
 Route::post('/users/{user}/demote', [UserController::class, 'demote'])->middleware(['auth',CheckAdmin::class]);
 
 //Apply for Moderator
 Route::post('/apply-for-moderator', [NewsFeedController::class, 'applyForModerator'])->middleware('auth');
 
+Route::post('/subscribe-post', [PostController::class, 'subscribePost'])->name('subscribe.post');
+Route::post('/unsubscribe-post', [PostController::class, 'unsubscribePost'])->name('unsubscribe.post');
+
+Route::get('/subscriptions', [PostController::class, 'subscriptions']);
 
 //Add NewsFeed
 Route::post('/add-news-feed' , [NewsFeedController::class, 'create'])->middleware(['auth',CheckAdmin::class]);

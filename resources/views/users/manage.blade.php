@@ -25,7 +25,7 @@
                         @elseif ($user->role === 'moderator')
                              <form  style="display: inline;" method="POST" action="/users/{{ $user->id }}/demote">
                                 @csrf
-                                <button class="edit-button" ><i class="fa-solid fa-arrow-down"></i> Demote to Student</button>
+                                <button class="edit-button" ><i class="fa-solid fa-arrow-down"></i> Demote to Korisnik </button>
                             </form>
                         @endif
                         <form style="display: inline;" method="POST" action="/users/{{ $user->id }}" id="delete-form-{{ $user->id }}">

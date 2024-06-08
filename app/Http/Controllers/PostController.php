@@ -44,6 +44,8 @@ public function index(){
 
 
 
+
+
     //Show Form For Post Creation
     public function create(){
         return view('posts.create');
@@ -122,20 +124,41 @@ public function index(){
 
 
     //Delete Post
-    public function destroy(Posts $post){
-
-        if($post->user_id != auth()->id()){
-            abort(403,'Unauthorized Action');
-        }
-
-        $postTitle = $post->title;
-        NewsFeed::create([
-            'content' => auth()->user()->name . " Removed a Post named $postTitle",
-        ]);
-
-        $post->delete();
-        return redirect('/')->with('message', "Post Deleted Successfully!");
+    public function destroy(Posts $post)
+{
+    // Make sure the logged-in user is a moderator
+    if (auth()->user()->role != 'moderator') {
+        return response()->json(['success' => false, 'message' => 'Unauthorized action.'], 403);
     }
+
+    $postTitle = $post->title;
+
+    // Get the ID of the post to be deleted
+    $postId = $post->id;
+
+    // Remove the post from all users' subscriptions
+    $users = User::all();
+    foreach ($users as $user) {
+        $subscribedPosts = $user->subscribed_posts ?? [];
+        if (($key = array_search($postId, $subscribedPosts)) !== false) {
+            unset($subscribedPosts[$key]);
+            $user->subscribed_posts = array_values($subscribedPosts); // Reindex the array
+            $user->save();
+        }
+    }
+
+    // Create a news feed entry for the deletion
+    NewsFeed::create([
+        'content' => auth()->user()->name . " removed a Post named $postTitle",
+    ]);
+
+    // Delete the post
+    $post->delete();
+
+    return response()->json(['success' => true, 'message' => "Post deleted successfully!"]);
+}
+
+
 
 
     //Manage Posts
@@ -169,6 +192,61 @@ public function index(){
     return redirect('/posts')->with('message','Dodat komentar');
 }
 
+public function subscribePost(Request $request)
+    {
+        $user = auth()->user();
+        $postId = $request->post_id;
+
+        $subscribedPosts = $user->subscribed_posts ?? [];
+        if (!in_array($postId, $subscribedPosts)) {
+            $subscribedPosts[] = $postId;
+            $user->subscribed_posts = $subscribedPosts;
+            $user->save();
+        }
+
+        return response()->json(['success' => true, 'subscribed_posts' => $subscribedPosts]);
+    }
+
+    public function subscriptions()
+    {
+        $searchTerm = request('search');
+        $user = Auth::user();
+
+        // Retrieve the subscribed post IDs from the user's subscriptions
+        $subscribedPostIds = $user->subscribed_posts ?? [];
+
+        // Fetch the subscribed posts
+        $posts = Posts::whereIn('id', $subscribedPostIds)->latest();
+
+        if ($searchTerm) {
+            $posts->where(function($query) use ($searchTerm) {
+                $query->where('title', 'like', '%' . $searchTerm . '%')
+                      ->orWhere('description', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        return view('posts.index', [
+            'posts' => $posts->paginate(3),
+            'newsFeed' => NewsFeed::latest()->get(),
+            'userSubscribedPosts' => $subscribedPostIds // Pass the subscribed post IDs
+        ]);
+    }
+
+
+public function unsubscribePost(Request $request)
+{
+    $user = Auth::user();
+    $postId = $request->post_id;
+
+    $subscribedPosts = $user->subscribed_posts ?? [];
+    if (in_array($postId, $subscribedPosts)) {
+        $subscribedPosts = array_diff($subscribedPosts, [$postId]);
+        $user->subscribed_posts = array_values($subscribedPosts);
+        $user->save();
+    }
+
+    return response()->json(['success' => true, 'message' => 'Unsubscribed successfully!', 'subscribed_posts' => $subscribedPosts]);
+}
 
 
 

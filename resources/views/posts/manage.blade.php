@@ -7,7 +7,6 @@
             <thead>
                 <tr>
                     <th>Posts</th>
-                    <th>Enrolled Students</th>
                     <th class="actions">Actions</th>
                 </tr>
             </thead>
@@ -15,20 +14,7 @@
                 @foreach ($posts as $post)
                 <tr class="posts_rows">
                     <td class="post-name"><a href="/posts/{{$post->id}}">{{$post->title}}</a></td>
-                    <td>
-                        @foreach ($post->enrolledStudents as $student)
-                        <div>
-                            {{$student->name }}
-                            @foreach ($student->testAttemtps as $testAttempt)
-                                @if ($testAttempt->post_id == $post->id)
-                                    {{ number_format($testAttempt->score, 0)}}%
-                                    @if (!$loop->last),
-                                    @endif
-                                @endif
-                            @endforeach
-                        </div>
-                        @endforeach
-                    </td>
+
                     <td class="actions">
                         <button class="edit-button"><a href="/posts/{{$post->id}}/edit"><i class="fa-solid fa-pencil"></i>  Edit</a></button>
                         <form style="display: inline;" method="POST" action="/posts/{{$post->id}}">

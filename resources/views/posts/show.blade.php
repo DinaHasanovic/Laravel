@@ -12,6 +12,7 @@
                 <p><strong>By:</strong><span> {{$post->user->name}}</span></p>
                 <p><strong>Time needed to prepare:</strong><span> {{$post['duration']}} hours</span></p>
             </div>
+            
             <div class="post_ReplyButton">
                 <a href="{{ route('reply.form', ['postId' => $post->id]) }}" class="reply_button">Odgovori</a>
 
